@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { IoSearchSharp } from "react-icons/io5";
@@ -36,8 +36,8 @@ const Navbar = () => {
     </ul>   
     </>
     return (
-       <div className=' bg-slate-100'>
-         <div className='flex items-center justify-between mx-10'>
+       <div className='  bg-white fixed top-0 w-full z-10'>
+         <div className='flex items-center justify-between px-10 py-2 bg-white'>
             <div><img className='h-[50px] ' src="https://i.postimg.cc/0jNDs17y/furniture-home.png" alt="" /></div>
             <div>{link}</div>
             <div>
