@@ -1,3 +1,4 @@
+import Footer from '../../Components/Footer/Footer';
 import Banner from './Banner';
 import BestSelling from './BestSelling';
 import FurnitureProducts from './FurnitureProducts';
@@ -6,12 +7,13 @@ import Testimonial from './Testimonial';
 
 const Home = () => {
     return (
-        <div>
+        <div className=''>
             <Banner></Banner>
             <BestSelling></BestSelling>
             <FurnitureProducts></FurnitureProducts>
             <Testimonial></Testimonial>
             <LatestProducts></LatestProducts>
+            <Footer></Footer>
         </div>
     );
 };

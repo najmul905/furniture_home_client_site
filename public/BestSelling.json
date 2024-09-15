@@ -1,27 +1,14 @@
 [
-    {
-      "Image": "https://i.postimg.cc/bJLjtP45/ad4e450cf1d66dba91b4b2b2ba337a66.png",
-      "Name": "Suitable Chair",
-      "Ratings": 4.5,
-      "Price": 99.99
-    },
-    {
-      "Image": "https://i.postimg.cc/D0Mkxgvd/chair1-org-org-z.png",
-      "Name": "Round Chair",
-      "Ratings": 4.2,
-      "Price": 149.99
-    },
-    {
-      "Image": "https://i.postimg.cc/wTnYJ0b9/DSC-0707-l.png",
-      "Name": "Rattan Lounge Chair",
-      "Ratings": 4.7,
-      "Price": 59.99
-    },
-    {
-      "Image": "https://i.postimg.cc/Bv6zVFzm/R-1.png",
-      "Name": "Basket chair",
-      "Ratings": 4.8,
-      "Price": 29.99
-    }
-  ]
-  
+  {
+    "_id": "1a2b3c",
+    "image": "https://i.postimg.cc/150WMJ4x/Designer-1.jpg"
+  },
+  {
+    "_id": "4d5e6f",
+    "image": "https://i.postimg.cc/PxpLr30P/Designer-2.jpg"
+  },
+  {
+    "_id": "7g8h9i",
+    "image": "https://i.postimg.cc/wjWqn53M/Designer-5.jpg"
+  }
+]

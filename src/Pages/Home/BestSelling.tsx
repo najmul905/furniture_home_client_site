@@ -1,21 +1,15 @@
 import { Rating } from "@mui/material";
-import { useEffect, useState } from "react";
-
+import { useGetBestSellingQuery } from "../../Redux/features/api/baseApi";
 
 const BestSelling = () => {
-    const[Data,setData]=useState([])
-    interface products{
-        Image:string,
-        Name:string,
-        Ratings:number,
-        Price:number
-    }
-    useEffect(()=>{
-        fetch("../../../public/BestSelling.json")
-        .then(res=>res.json())
-        .then(data=>setData(data))
-    },[])
-    const data:products[]=Data
+
+    const {data = [],isError,isLoading}=useGetBestSellingQuery();
+   if(isError){
+    <div>error</div>
+   }
+   if(isLoading){
+    <div>Loading....</div>
+   }
     
     return (
         <div>
@@ -25,7 +19,7 @@ const BestSelling = () => {
             </title>
         <div className="grid grid-cols-4 gap-4 items-center justify-center mx-12">
             {
-               data.map((d,index)=><div key={index}>
+               data.map(d=><div key={d._id}>
                 <div className=" ">
                    <div className="bg-slate-100 p-14">
                    <img className="h-[300px] w-[200px] mx-auto " src={d.Image} alt="" />

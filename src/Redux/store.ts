@@ -1,9 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from '../Redux/features/Counter/counterSlice'
+import { baseApi } from "./features/api/baseApi";
 export const store= configureStore({
     reducer:{
-        counter:counterReducer
-            }
+      [baseApi.reducerPath]:baseApi.reducer,
+            },
+    middleware: (getDefaultMiddleware) =>
+            getDefaultMiddleware().concat(baseApi.middleware),
+
 })
 
 export type RootState = ReturnType<typeof store.getState>
