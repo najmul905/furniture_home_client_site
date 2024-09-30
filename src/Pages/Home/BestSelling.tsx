@@ -22,7 +22,7 @@ const BestSelling = () => {
                data.map(d=><div key={d._id}>
                 <div className=" ">
                    <div className="bg-slate-100 p-14">
-                   <img className="h-[300px] w-[200px] mx-auto " src={d.Image} alt="" />
+                   <img className="h-[200px]  mx-auto " src={d.Image} alt="" />
                    </div>
                     <div className="text-center my-5">
                         <h1 className="font-bold">{d.Name}</h1>
@@ -36,7 +36,7 @@ const BestSelling = () => {
                </div>)
             }
         </div>
-        <div className="grid grid-cols-2 gap-5 mx-20 mt-32">
+        <div className="grid grid-cols-2 gap-5 mx-20 mt-10">
             <div className="flex items-center bg-slate-100 rounded-md overflow-auto">
                 <div className="ml-[30px]">
                 <h3 className="text-[15xl] font-semibold text-slate-600">Sunday Offer</h3>

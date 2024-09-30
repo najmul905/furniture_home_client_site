@@ -23,7 +23,6 @@ const CarouselPage = () => {
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
-  console.log(data);
 
   const pre = useCallback(() => {
     setCur((cur) => (cur === 0 ? data.length - 1 : cur - 1));
@@ -40,7 +39,7 @@ const CarouselPage = () => {
     return () => clearInterval(slideInterval);
   }, [autoSlide, next, autoSlideTime]);
 
-  console.log(cur, data.length);
+ 
 
   return (
     <div className="overflow-hidden rounded-lg relative">
@@ -49,8 +48,8 @@ const CarouselPage = () => {
         style={{ transform: `translateX(-${cur * 100}%)` }}
       >
         {data?.map((item) => (
-          <div className="w-full flex-shrink-0" key={item._id}>
-            <img className="w-full object-cover" src={item.image} alt="" />
+          <div className="w-full h-60 flex-shrink-0" key={item._id}>
+            <img className="w-full h-60 object-cover" src={item.image} alt="" />
            
           </div>
 
