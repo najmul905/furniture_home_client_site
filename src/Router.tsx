@@ -5,6 +5,9 @@ import Shop from "./Pages/Shop/Shop";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import LatestFurniture from "./Pages/LatestFurniture/LatestFurniture";
 import AddProducts from "./Pages/Dashboard/MainPage/AddProducts";
+import AddLatestProducts from "./Pages/Dashboard/MainPage/AddLatestProducts";
+import AllProducts from "./Pages/Shop/Share/AllProducts";
+import MainPage from "./Pages/Shop/Share/MainPage";
 
 export const router=createBrowserRouter([
     {
@@ -17,7 +20,17 @@ export const router=createBrowserRouter([
             },
             {
                 path:'shope',
-                element:<Shop></Shop>
+                element:<Shop></Shop>,
+                children:[
+                    {
+                        path:'mainPage/:category',
+                        element:<MainPage></MainPage>
+                    }
+                ]
+            },
+            {
+                path:"allProducts/:name",
+                element:<AllProducts></AllProducts>
             },
            {
             path:'dashboard',
@@ -26,13 +39,18 @@ export const router=createBrowserRouter([
                 {
                     path:"addProducts",
                     element:<AddProducts></AddProducts>
+                },
+                {
+                    path:"addLatestProducts",
+                    element:<AddLatestProducts></AddLatestProducts>
                 }
             ]
            },
            {
             path:'latestFurniture',
             element:<LatestFurniture></LatestFurniture>
-           }
+           },
+           
         ]
     }
 ])

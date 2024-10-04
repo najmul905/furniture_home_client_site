@@ -21,6 +21,14 @@ interface Products{
     Discount:number,
     _id:number|string
     }
+interface LatestProducts{
+    Name:string,
+    About:string,
+    Image:string,
+    Price:number,
+    _id:string|number,
+    Date:string
+    }    
 
 export const baseApi=createApi({
     reducerPath: "api",
@@ -37,6 +45,10 @@ export const baseApi=createApi({
             query:()=>"products",
             providesTags:["Products"]
         }),
+        getLatestProducts:builder.query<LatestProducts[],void>({
+            query:()=>"latest_products"
+        })
+        ,
         addProducts:builder.mutation({
             query:(data)=>({
                 url:"products",
@@ -44,8 +56,15 @@ export const baseApi=createApi({
                 body:data
             }),
             invalidatesTags:["Products"]
+        }),
+        addLatestProduct:builder.mutation({
+            query:(data)=>({
+                url:"latest_products",
+                method:"POST",
+                body:data
+            })
         })
     })
 })
 
- export const {useGetBestSellingQuery,useGetCategoryQuery,useAddProductsMutation,useGetProductsDataQuery}=baseApi
+ export const {useGetBestSellingQuery,useGetLatestProductsQuery,useGetCategoryQuery,useAddProductsMutation,useGetProductsDataQuery,useAddLatestProductMutation}=baseApi

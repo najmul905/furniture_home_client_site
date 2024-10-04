@@ -4,7 +4,7 @@ import AllProducts from './AllProducts';
 
 const MainPage = () => {
     return (
-        <div className='pt-20 ml-[25vw] bg-slate-100 px-12'>
+        <div className='pt-20 ml-[20vw] px-12'>
             <CarouselPage></CarouselPage>
             <div className='mt-12'>
             <AllProducts></AllProducts>
