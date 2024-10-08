@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useGetProductsDataQuery } from '../../../Redux/features/api/baseApi';
 import { useEffect, useState } from 'react';
+// import Footer from '../../../Components/Footer/Footer';
 
 const AllProducts = () => {
    interface Data{
@@ -37,11 +38,12 @@ const AllProducts = () => {
         </div>
     }
     return (
-        <div className='grid grid-cols-4 gap-6'>
+       <div>
+         <div className='grid grid-cols-4 gap-6'>
             {
                 CategoryData?.map((Data, index) => (
                     <div key={index}>
-                        <div className="rounded-lg bg-base-100 my-5 shadow-xl">
+                        <div className="hover:rounded-lg bg-base-100 border my-5 hover:shadow-xl">
                             <figure className=''>
                                 <img
                                     className=' h-44 w-full'
@@ -61,7 +63,12 @@ const AllProducts = () => {
                     </div>
                 ))
             }
+            
         </div>
+        {/* <div>
+            <Footer></Footer>
+        </div> */}
+       </div>
     );
 };
 

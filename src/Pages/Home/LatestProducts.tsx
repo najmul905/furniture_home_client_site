@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const LatestProducts = () => {
     // const [visibleItem,setVisibleItem]=useState(4)
-    const visibleItem:number=4
+    const visibleItem:number=8
     const {data}=useGetLatestProductsQuery()
   
     return (
@@ -36,7 +36,7 @@ const LatestProducts = () => {
      
         <div className="text-center my-6">
           <Link className="border border-orange-600 p-2 rounded-full font-semibold" to="latestFurniture">
-         Show more
+         Show more..
           </Link>
         </div>
      

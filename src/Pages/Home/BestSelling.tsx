@@ -55,7 +55,7 @@ const BestSelling = () => {
                 <button>View Collection</button>
                 </div>
                 <div className="">
-                    <img className="h-[300px] p-8" src="https://i.postimg.cc/y6SR2rKw/Modern-Furniture-PNG-Background-Image.png" alt="" />
+                    <img className="h-[300px] p-8" src="https://i.postimg.cc/2ywBw8pD/vintage-rubber-wood-and-oak-chair-fjord-1000-6-16-165943-1.png" alt="" />
                 </div>
             </div>
             

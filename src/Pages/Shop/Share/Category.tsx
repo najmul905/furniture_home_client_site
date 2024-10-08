@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useGetCategoryQuery } from '../../../Redux/features/api/baseApi';
+import { motion } from 'framer-motion';
 
 const Category = () => {
     const {data=[],isLoading}=useGetCategoryQuery()
@@ -13,10 +14,13 @@ const Category = () => {
                 {
                     data?.map((Data,index)=>(
                         <Link key={index} to={`mainPage/${Data.Name}`}>
-                        <div  className='text-center border rounded shadow-xl cursor-pointer'>
+                        <motion.div 
+                          whileHover={{ scale: [null, 0.9] }}
+                          transition={{ duration: 0.2 }}
+                        className='text-center border rounded shadow-xl cursor-pointer'>
                             <img className='h-28 w-full' src={Data.image} alt="" />
                             <h1>{Data.Name}</h1>
-                        </div>
+                        </motion.div>
                         </Link>
                     ))
                     

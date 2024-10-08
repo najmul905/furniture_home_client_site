@@ -1,4 +1,3 @@
-import React from 'react';
 import CarouselPage from './CarouselPage';
 import AllProducts from './AllProducts';
 
