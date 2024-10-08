@@ -8,6 +8,7 @@ import AddProducts from "./Pages/Dashboard/MainPage/AddProducts";
 import AddLatestProducts from "./Pages/Dashboard/MainPage/AddLatestProducts";
 import AllProducts from "./Pages/Shop/Share/AllProducts";
 import MainPage from "./Pages/Shop/Share/MainPage";
+import Offer from "./Pages/Offer/Offer";
 
 export const router=createBrowserRouter([
     {
@@ -50,6 +51,10 @@ export const router=createBrowserRouter([
             path:'latestFurniture',
             element:<LatestFurniture></LatestFurniture>
            },
+           {
+            path:"offer",
+            element:<Offer></Offer>
+           }
            
         ]
     }

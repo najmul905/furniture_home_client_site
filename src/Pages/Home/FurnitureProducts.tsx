@@ -29,7 +29,7 @@ const FurnitureProducts = () => {
                 }
             </div>
             <div className="text-center my-10">
-            <Link className="border border-orange-600 p-2 rounded-full font-semibold" to="latestFurniture">
+            <Link className="border border-orange-600 p-2 rounded-full font-semibold" to="offer">
          Show more..
           </Link>
             </div>
