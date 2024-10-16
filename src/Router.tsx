@@ -9,6 +9,8 @@ import AddLatestProducts from "./Pages/Dashboard/MainPage/AddLatestProducts";
 import AllProducts from "./Pages/Shop/Share/AllProducts";
 import MainPage from "./Pages/Shop/Share/MainPage";
 import Offer from "./Pages/Offer/Offer";
+import LogIn from "./Components/LogIn_SingIn page/LogIn";
+import SingUp from "./Components/LogIn_SingIn page/SingIn";
 
 export const router=createBrowserRouter([
     {
@@ -57,5 +59,13 @@ export const router=createBrowserRouter([
            }
            
         ]
+    },
+    {
+        path:"logIn",
+        element:<LogIn></LogIn>
+    },
+    {
+        path:"singUp",
+        element:<SingUp></SingUp>
     }
 ])

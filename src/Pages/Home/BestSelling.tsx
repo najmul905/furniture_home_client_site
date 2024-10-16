@@ -14,10 +14,10 @@ const BestSelling = () => {
     return (
         <div>
             {/* title */}
-            <title className="flex items-center justify-center gap-10 my-10">
+            {/* <title className="flex items-center justify-center gap-10 my-10">
                 <hr className="w-52  border-2 border-slate-400" /><h1 className="uppercase text-[25px] text-slate-600">Best Selling Furniture</h1><hr className="w-52 border-2 border-slate-400"/>
-            </title>
-        <div className="grid grid-cols-4 gap-4 items-center justify-center mx-12">
+            </title> */}
+        <div className="grid grid-cols-4 gap-4  mx-12">
             {
                data.map(d=><div key={d._id}>
                 <div className=" ">
@@ -36,7 +36,7 @@ const BestSelling = () => {
                </div>)
             }
         </div>
-        <div className="grid grid-cols-2 gap-5 mx-20 mt-10">
+        <div className="grid grid-cols-2 gap-5 mx-12 mt-10">
             <div className="flex items-center bg-slate-100 rounded-md overflow-auto">
                 <div className="ml-[30px]">
                 <h3 className="text-[15xl] font-semibold text-slate-600">Sunday Offer</h3>
