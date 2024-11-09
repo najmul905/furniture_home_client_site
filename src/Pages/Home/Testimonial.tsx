@@ -40,7 +40,7 @@ const Testimonial = () => {
                     <div key={index} className="flex-shrink-0 w-full h-60 bg-slate-400">
                         <img src={Data.Image} className="h-20 w-20 rounded-full mt-3 mx-auto" alt="" />
                         <div className="text-center mx-20">
-                            <p>{Data.About}</p>
+                            <p className="font-TestimonialFont text-[20px] text-white">{Data.About}</p>
                             <h1 className="my-4 text-[14px] font-semibold">{Data.Name}</h1>
                             <h1 className="text-[13px] font-semibold">{Data.Position}</h1>
                         </div>

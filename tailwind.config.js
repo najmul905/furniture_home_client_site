@@ -6,7 +6,8 @@ export default {
   ],
   theme: {
     fontFamily:{
-      "baseFont":["Tinos"]
+      "baseFont":["Tinos"],
+      "TestimonialFont":["Dancing Script"]
     },
     extend: {},
     daisyui: {

@@ -14,26 +14,26 @@ const Banner = () => {
                 className="ml-[20px] md:ml-[100px]">
             <motion.h1
             initial={{x:100,opacity:0}}
-            whileInView={{x:0,opacity:1}}
+            animate={{x:0,opacity:1}}
             transition={{duration:2}}
             className=" text-5xl text-white">Your Stylist Furniture <br /> in Our Shope.</motion.h1>
             <motion.p
             initial={{x:-100, opacity:0}}
-            whileInView={{x:0,opacity:1}}
+            animate={{x:0,opacity:1}}
             transition={{duration:2,}}
             className="my-6 mr-28 text-white">If you want to build your home as a organist way.Then you came our shope and explore our products and build your home as a stylist way.</motion.p>
             <motion.div
-            initial={{y:70,opacity:0}}
-            whileInView={{y:0,opacity:1}}
-            transition={{delay:1,duration:2}}
+            initial={{y:70,opacity:0,scale:4}}
+            animate={{y:0,opacity:1,scale:1}}
+            transition={{delay:1.5,duration:1}}
             >
             <Link to="shope"><button
-            className="bg-black text-white py-3 px-3 hover:bg-white hover:text-black ">SHOPE NOW</button></Link>
+            className="bg-black text-white py-3 px-3 hover:bg-white duration-500 hover:text-black ">SHOPE NOW</button></Link>
             </motion.div>
                 </motion.div>
                 <motion.div
                 initial={{y:-100,opacity:0}}
-                whileInView={{y:0,opacity:1}}
+                animate={{y:0,opacity:1}}
                 transition={{duration:2}}
                 >
                 <img src="https://i.postimg.cc/T24QT0Q6/story-pic-update.png" alt="" />
@@ -43,7 +43,7 @@ const Banner = () => {
             <div className="p-8 border-4 border-white grid grid-cols-3 gap-4 m-4">
                 <motion.div
                 initial={{x:-60,opacity:0}}
-                whileInView={{x:0,opacity:1}}
+                animate={{x:0,opacity:1}}
                 transition={{duration:1.5}}
                 className="">
                     <div className="flex items-center justify-between bg-slate-300 rounded shadow-lg">
@@ -60,7 +60,7 @@ const Banner = () => {
                 </motion.div>
                 <motion.div
                 initial={{y:60,opacity:0}}
-                whileInView={{y:0,opacity:1}}
+                animate={{y:0,opacity:1}}
                 transition={{duration:1.5}}
                 className="">
                     <div className="flex items-center justify-between bg-slate-300 rounded shadow-lg">
@@ -77,7 +77,7 @@ const Banner = () => {
                 </motion.div>
                 <motion.div
                 initial={{x:60,opacity:0}}
-                whileInView={{x:0,opacity:1}}
+                animate={{x:0,opacity:1}}
                 transition={{duration:1.5}}
                 className="">
                     <div className="flex items-center justify-between bg-slate-300 rounded shadow-lg">

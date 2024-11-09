@@ -1,6 +1,7 @@
 // import { useState } from "react";
 import { useGetLatestProductsQuery } from "../../Redux/features/api/baseApi";
 import { Link } from "react-router-dom";
+import {motion} from "framer-motion"
 
 const LatestProducts = () => {
     // const [visibleItem,setVisibleItem]=useState(4)
@@ -16,7 +17,11 @@ const LatestProducts = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 pb-10 mx-14">
             {
           data?.slice(0, visibleItem).map((Data, index) => (
-            <div key={index} className="border">
+            <motion.div
+            initial={{scale:0.7, y:100,opacity:0}}
+            whileInView={{scale:1,y:0,opacity:1}}
+            transition={{duration:1,delay:0.3}}
+            key={index} className="border">
               <img className="bg-slate-500 md:h-60 h-36 w-full" src={Data.Image} alt="" />
               <div className="mx-5 py-4">
                 <h2 className="text-[18px] font-bold">{Data.Name}</h2>
@@ -27,7 +32,7 @@ const LatestProducts = () => {
                   <button className="px-2 border-2 font-semibold active:bg-black active:text-white border-orange-500 rounded-full">Add to Card</button>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))
         }
             </div>

@@ -6,6 +6,7 @@ import LatestProducts from './LatestProducts';
 import Testimonial from './Testimonial';
 
 const Home = () => {
+   
     return (
         <div className=''>
             <Banner></Banner>

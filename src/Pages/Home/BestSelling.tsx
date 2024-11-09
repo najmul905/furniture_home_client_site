@@ -1,5 +1,6 @@
 import { Rating } from "@mui/material";
 import { useGetBestSellingQuery } from "../../Redux/features/api/baseApi";
+import {motion} from "framer-motion"
 
 const BestSelling = () => {
 
@@ -14,9 +15,9 @@ const BestSelling = () => {
     return (
         <div>
             {/* title */}
-            {/* <title className="flex items-center justify-center gap-10 my-10">
+            <title className="flex items-center justify-center gap-10 my-10">
                 <hr className="w-52  border-2 border-slate-400" /><h1 className="uppercase text-[25px] text-slate-600">Best Selling Furniture</h1><hr className="w-52 border-2 border-slate-400"/>
-            </title> */}
+            </title>
         <div className="grid grid-cols-4 gap-4  mx-12">
             {
                data.map(d=><div key={d._id}>
@@ -24,14 +25,32 @@ const BestSelling = () => {
                    <div className="bg-slate-100 p-14">
                    <img className="h-[200px]  mx-auto " src={d.Image} alt="" />
                    </div>
-                    <div className="text-center my-5">
-                        <h1 className="font-bold">{d.Name}</h1>
+                    <motion.div
+                   
+                    className="text-center my-5">
+                        <motion.h1
+                         initial={{opacity:0, y:20}}
+                         whileInView={{opacity:1, y:0}}
+                         transition={{delay:0.30,duration:1}}
+                        className="font-bold">{d.Name}</motion.h1>
                         <div className="my-4">
-                        <Rating name="read-only" value={d.Ratings} readOnly size="small" />
-                        <p>$ {d.Price}</p>
+                       <motion.div
+                        initial={{opacity:0, y:50}}
+                        whileInView={{opacity:1, y:0}}
+                        transition={{delay:0.30,duration:1}}
+                       > <Rating name="read-only" value={d.Ratings} readOnly size="small" /></motion.div>
+                        <motion.p
+                         initial={{opacity:0, y:70}}
+                         whileInView={{opacity:1, y:0}}
+                         transition={{delay:0.40,duration:1}}
+                        >$ {d.Price}</motion.p>
                         </div>
-                        <button className="border-b-2 text-[12px] active:border-slate-600">ADD TO CARD</button>
-                    </div>
+                        <motion.button
+                         initial={{opacity:0, y:20}}
+                         whileInView={{opacity:1, y:0}}
+                         transition={{delay:0.90,duration:1}}
+                        className="border-b-2 text-[12px] active:border-slate-600">ADD TO CARD</motion.button>
+                    </motion.div>
                 </div>
                </div>)
             }
