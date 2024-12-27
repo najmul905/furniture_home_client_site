@@ -12,8 +12,10 @@ import Offer from "./Pages/Offer/Offer";
 import LogIn from "./Components/LogIn_SingIn page/LogIn";
 import SingUp from "./Components/LogIn_SingIn page/SingIn";
 import {  Suspense } from "react";
-import SkeletonUI from "./Components/Skeleton/Skeleton";
-import { LazyAllProducts, LazyHome, LazyLatestFurniture } from "./LazyComponents";
+// import SkeletonUI from "./Components/Skeleton/Skeleton";
+import { LazyProducts, LazyHome, LazyLatestFurniture } from "./LazyComponents";
+import CircularWithValueLabel from "./Components/Progress/Progress";
+import AdminHome from "./Pages/Dashboard/MainPage/AdminHome";
 
 
 
@@ -25,7 +27,7 @@ export const router=createBrowserRouter([
             {
                 path:'/',
                 element:(
-                    <Suspense fallback={<SkeletonUI></SkeletonUI>}>
+                    <Suspense fallback={<CircularWithValueLabel></CircularWithValueLabel>}>
                        <LazyHome></LazyHome>
                     </Suspense>
                 )
@@ -41,10 +43,10 @@ export const router=createBrowserRouter([
                 ]
             },
             {
-                path:"allProducts/:name",
+                path:"Products/:name",
                 element:(
-                    <Suspense fallback={<SkeletonUI></SkeletonUI>}>
-                        <LazyAllProducts></LazyAllProducts>
+                    <Suspense fallback={<CircularWithValueLabel></CircularWithValueLabel>}>
+                        <LazyProducts></LazyProducts>
                     </Suspense>
                 )
             },
@@ -52,6 +54,10 @@ export const router=createBrowserRouter([
             path:'dashboard',
             element:<Dashboard></Dashboard>,
             children:[
+                {
+                    path:'/dashboard',
+                    element:<AdminHome></AdminHome>
+                },
                 {
                     path:"addProducts",
                     element:<AddProducts></AddProducts>
@@ -65,7 +71,7 @@ export const router=createBrowserRouter([
            {
             path:'latestFurniture',
             element:(
-                <Suspense fallback={<SkeletonUI></SkeletonUI>}>
+                <Suspense fallback={<CircularWithValueLabel></CircularWithValueLabel>}>
                     <LazyLatestFurniture></LazyLatestFurniture>
                 </Suspense>
             )

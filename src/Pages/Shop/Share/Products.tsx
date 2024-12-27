@@ -1,9 +1,10 @@
 import { useParams } from 'react-router-dom';
 import { useGetProductsDataQuery } from '../../../Redux/features/api/baseApi';
 import { useEffect, useState } from 'react';
+import ProductsSkeleton from './ProductsSkeleton';
 // import Footer from '../../../Components/Footer/Footer';
 
-const AllProducts = () => {
+const Products = () => {
    interface Data{
     Name:string,
     Category:string,
@@ -15,7 +16,7 @@ const AllProducts = () => {
    }
     const {category}=useParams()
     console.log(category)
-    const { data } = useGetProductsDataQuery()
+    const { data,isLoading } = useGetProductsDataQuery()
     const [CategoryData,setCategoryData]=useState<Data[]>([])
 
     useEffect(() => {
@@ -35,7 +36,7 @@ const AllProducts = () => {
    
     return (
        <div>
-         <div className='grid grid-cols-4 gap-6'>
+         <div hidden={isLoading} className='grid grid-cols-4 gap-6'>
             {
                 CategoryData?.map((Data, index) => (
                     <div key={index}>
@@ -61,11 +62,11 @@ const AllProducts = () => {
             }
             
         </div>
-        {/* <div>
-            <Footer></Footer>
-        </div> */}
+        <div hidden={!isLoading}>
+            <ProductsSkeleton></ProductsSkeleton>
+        </div>
        </div>
     );
 };
 
-export default AllProducts;
+export default Products;
