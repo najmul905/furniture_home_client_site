@@ -18,12 +18,12 @@ const BestSelling = () => {
             <title className="flex items-center justify-center gap-10 my-10">
                 <hr className="w-52  border-2 border-slate-400" /><h1 className="uppercase text-[25px] text-slate-600">Best Selling Furniture</h1><hr className="w-52 border-2 border-slate-400"/>
             </title>
-        <div className="grid grid-cols-4 gap-4  mx-12">
+        <div className="grid md:grid-cols-4 grid-cols-2 gap-4  mx-2 md:mx-12">
             {
                data.map(d=><div key={d._id}>
                 <div className=" ">
-                   <div className="bg-slate-100 p-14">
-                   <img className="h-[200px]  mx-auto " src={d.Image} alt="" />
+                   <div className="bg-slate-100 md:p-14">
+                   <img className="md:h-[200px] h-[100px]  mx-auto " src={d.Image} alt="" />
                    </div>
                     <motion.div
                    
@@ -55,7 +55,7 @@ const BestSelling = () => {
                </div>)
             }
         </div>
-        <div className="grid grid-cols-2 gap-5 mx-12 mt-10">
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-5 mx-2 md:mx-12 mt-10">
             <div className="flex items-center bg-slate-100 rounded-md overflow-auto">
                 <div className="ml-[30px]">
                 <h3 className="text-[15xl] font-semibold text-slate-600">Sunday Offer</h3>
@@ -63,7 +63,7 @@ const BestSelling = () => {
                 <button>View Collection</button>
                 </div>
                 <div>
-                    <img className="h-[300px] p-8" src="https://i.postimg.cc/y6SR2rKw/Modern-Furniture-PNG-Background-Image.png" alt="" />
+                    <img className="md:h-[300px] h-[150px] md:p-8" src="https://i.postimg.cc/y6SR2rKw/Modern-Furniture-PNG-Background-Image.png" alt="" />
                 </div>
             </div>
             <div className="flex items-center bg-slate-100 rounded-md ">

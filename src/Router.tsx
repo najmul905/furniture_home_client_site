@@ -1,16 +1,21 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
-import Home from "./Pages/Home/Home";
+// import Home from "./Pages/Home/Home";
 import Shop from "./Pages/Shop/Shop";
 import Dashboard from "./Pages/Dashboard/Dashboard";
-import LatestFurniture from "./Pages/LatestFurniture/LatestFurniture";
+// import LatestFurniture from "./Pages/LatestFurniture/LatestFurniture";
 import AddProducts from "./Pages/Dashboard/MainPage/AddProducts";
 import AddLatestProducts from "./Pages/Dashboard/MainPage/AddLatestProducts";
-import AllProducts from "./Pages/Shop/Share/AllProducts";
+// import AllProducts from "./Pages/Shop/Share/AllProducts";
 import MainPage from "./Pages/Shop/Share/MainPage";
 import Offer from "./Pages/Offer/Offer";
 import LogIn from "./Components/LogIn_SingIn page/LogIn";
 import SingUp from "./Components/LogIn_SingIn page/SingIn";
+import {  Suspense } from "react";
+import SkeletonUI from "./Components/Skeleton/Skeleton";
+import { LazyAllProducts, LazyHome, LazyLatestFurniture } from "./LazyComponents";
+
+
 
 export const router=createBrowserRouter([
     {
@@ -19,7 +24,11 @@ export const router=createBrowserRouter([
         children:[
             {
                 path:'/',
-                element:<Home></Home>
+                element:(
+                    <Suspense fallback={<SkeletonUI></SkeletonUI>}>
+                       <LazyHome></LazyHome>
+                    </Suspense>
+                )
             },
             {
                 path:'shope',
@@ -33,7 +42,11 @@ export const router=createBrowserRouter([
             },
             {
                 path:"allProducts/:name",
-                element:<AllProducts></AllProducts>
+                element:(
+                    <Suspense fallback={<SkeletonUI></SkeletonUI>}>
+                        <LazyAllProducts></LazyAllProducts>
+                    </Suspense>
+                )
             },
            {
             path:'dashboard',
@@ -51,7 +64,11 @@ export const router=createBrowserRouter([
            },
            {
             path:'latestFurniture',
-            element:<LatestFurniture></LatestFurniture>
+            element:(
+                <Suspense fallback={<SkeletonUI></SkeletonUI>}>
+                    <LazyLatestFurniture></LazyLatestFurniture>
+                </Suspense>
+            )
            },
            {
             path:"offer",

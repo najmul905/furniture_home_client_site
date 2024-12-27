@@ -1,12 +1,18 @@
 // import { useState } from "react";
 import { useGetLatestProductsQuery } from "../../Redux/features/api/baseApi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {motion} from "framer-motion"
 
 const LatestProducts = () => {
     // const [visibleItem,setVisibleItem]=useState(4)
     const visibleItem:number=8
     const {data}=useGetLatestProductsQuery()
+    const navigate =useNavigate()
+    const handleClick = () => {
+      navigate("/latestFurniture");
+      // Scroll to the top of the page
+      window.scrollTo(0, 0);
+    };
   
     return (
         <div>
@@ -14,12 +20,12 @@ const LatestProducts = () => {
                 <hr className="w-52  border-2 border-slate-400" /><h1 className="uppercase text-[25px] text-slate-600">Latest Products</h1><hr className="w-52 border-2 border-slate-400"/>
             </title>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 pb-10 mx-14">
+            <div className="grid grid-cols-2 md:grid-cols-4  gap-5 pb-10 mx-2 md:mx-14">
             {
           data?.slice(0, visibleItem).map((Data, index) => (
             <motion.div
-            initial={{scale:0.7, y:100,opacity:0}}
-            whileInView={{scale:1,y:0,opacity:1}}
+            initial={{scale:0.9, y:100}}
+            whileInView={{scale:1,y:0}}
             transition={{duration:1,delay:0.3}}
             key={index} className="border">
               <img className="bg-slate-500 md:h-60 h-36 w-full" src={Data.Image} alt="" />
@@ -40,7 +46,7 @@ const LatestProducts = () => {
              {/* Show More Button */}
      
         <div className="text-center my-6">
-          <Link className="border border-orange-600 p-2 rounded-full font-semibold" to="latestFurniture">
+          <Link onClick={handleClick} to="/latestFurniture" className="border border-orange-600 p-2 rounded-full font-semibold" >
          Show more..
           </Link>
         </div>

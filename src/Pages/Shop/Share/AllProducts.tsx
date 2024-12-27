@@ -15,7 +15,7 @@ const AllProducts = () => {
    }
     const {category}=useParams()
     console.log(category)
-    const { data, isLoading } = useGetProductsDataQuery()
+    const { data } = useGetProductsDataQuery()
     const [CategoryData,setCategoryData]=useState<Data[]>([])
 
     useEffect(() => {
@@ -32,11 +32,7 @@ const AllProducts = () => {
       }, [data, category]);
     console.log(CategoryData)
 
-    if (isLoading) {
-        <div className=''>
-            <h1>Loading...</h1>
-        </div>
-    }
+   
     return (
        <div>
          <div className='grid grid-cols-4 gap-6'>

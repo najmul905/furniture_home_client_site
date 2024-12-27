@@ -7,8 +7,8 @@ const Banner = () => {
         <div className="relative   bg-cover bg-fixed  " style={{backgroundImage:`url("https://i.postimg.cc/hG8vFycv/istockphoto-943910360-612x612.jpg")`,
         
         }}>
-            <div className="bg-black bg-opacity-50 pt-20 pb-5">
-            <div className=" flex items-center pb-20 pt-20">
+            <div className="bg-black bg-opacity-50 pt-20 pb-5 overflow-hidden">
+            <div className=" md:flex md:items-center pb-20 pt-20">
                 <motion.div
                  
                 className="ml-[20px] md:ml-[100px]">
@@ -40,7 +40,7 @@ const Banner = () => {
                 </motion.div>
             </div>
             {/* second section */}
-            <div className="p-8 border-4 border-white grid grid-cols-3 gap-4 m-4">
+            <div className="p-8 border-4 border-white grid md:grid-cols-3 gap-4 grid-cols-1 m-4">
                 <motion.div
                 initial={{x:-60,opacity:0}}
                 animate={{x:0,opacity:1}}
