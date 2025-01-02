@@ -16,6 +16,7 @@ import {  Suspense } from "react";
 import { LazyProducts, LazyHome, LazyLatestFurniture } from "./LazyComponents";
 import CircularWithValueLabel from "./Components/Progress/Progress";
 import AdminHome from "./Pages/Dashboard/MainPage/AdminHome";
+import Card from "./Pages/Card/Card";
 
 
 
@@ -79,6 +80,10 @@ export const router=createBrowserRouter([
            {
             path:"offer",
             element:<Offer></Offer>
+           },
+           {
+            path:"card",
+            element:<Card></Card>
            }
            
         ]

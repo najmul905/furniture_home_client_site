@@ -2,13 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import { baseApi } from "./features/api/baseApi";
 import { userSlice } from "./features/userSlice/userSlice";
 import { userdataSlice } from "./features/userdataSlice/userdataSlice";
+import { addCardSlice } from "./features/addCard/addCard";
 import { useDispatch } from "react-redux";
 export const store = configureStore({
         reducer: {
                 [baseApi.reducerPath]: baseApi.reducer,
                 userSlice:userSlice.reducer,
                 userdataSlice:userdataSlice.reducer,
-               
+                addCardSlice:addCardSlice.reducer               
                 
                 
 

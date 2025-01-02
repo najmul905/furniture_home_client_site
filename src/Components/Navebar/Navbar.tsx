@@ -20,13 +20,15 @@ const underlineMapping: Record<ValidPaths, string> = {
 
 const Navbar = () => {
     
+
     const location = useLocation();
     const currentPath = location.pathname as ValidPaths; 
     const underline: string = underlineMapping[currentPath] || "";
     const [isOpen,setIsOpen]=useState(false)
     const [userTogol, setUserTagol] = useState(false);
-    const  {email,displayName,photoURL,isLoading}=useSelector((state:RootState)=>state.userdataSlice)
-    console.log(email,displayName,isLoading)
+    const  {email,photoURL}=useSelector((state:RootState)=>state.userdataSlice)
+    const products=useSelector((state:RootState)=>state.addCardSlice.products)
+    console.log(products.length)
     
     const handelLogOut = () => {
         signOut(auth).catch((error) => console.error("Logout failed: ", error));
@@ -50,13 +52,15 @@ const Navbar = () => {
     </>;
 
     const option = <>
-        <ul className='flex items-center gap-4'>
+        <ul className='flex items-center  gap-6'>
             
-            <li><AiOutlineShoppingCart className='h-6 w-6 cursor-pointer' /></li>
+           <Link to='card'> <li className='flex items-center relative '><AiOutlineShoppingCart className='h-6 w-6 cursor-pointer' />
+            <p className=' bg-red-700 px-[5px]  font-bold text-[10px] text-white rounded-full absolute top-0 left-5 ring-2'>{products.length}</p>
+            </li></Link>
             <li onClick={() => setUserTagol(!userTogol)}>
             {email?
-                <img className='h-9 w-9 rounded-full cursor-pointer' src={photoURL??undefined}
-                 alt="" />:<FaUserCircle className='h-6 w-6 cursor-pointer' />}
+                <div className='h-9 w-9 rounded-full'><img className='h-9 w-9 rounded-full cursor-pointer' src={photoURL??undefined}
+                alt="" /></div>:<FaUserCircle className='h-6 w-6 cursor-pointer' />}
             </li>
             <li onClick={()=>setIsOpen(!isOpen)} className='md:hidden'>
                 {

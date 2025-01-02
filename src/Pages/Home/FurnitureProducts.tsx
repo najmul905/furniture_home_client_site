@@ -5,7 +5,6 @@ import SkeletonUI from "../../Components/Skeleton/Skeleton";
 
 const FurnitureProducts = () => {
     const {data,isLoading}=useGetProductsDataQuery()
-    console.log(isLoading)
     const offerData = data?.filter((item) => item.Discount > 5);
     const visibleItem:number=8;
 

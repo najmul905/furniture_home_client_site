@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 
 const LatestFurniture = () => {
     const { data } = useGetLatestProductsQuery()
-    console.log(data)
     return (
         <div className="pt-20 ">
             <div style={{ backgroundImage: `url("https://i.ibb.co.com/1sctGFR/modern-living-room-furniture-design-ipc500.jpg")` }} className=" bg-cover mb-5  overflow-hidden md:my-20 mx-4 md:mx-36 relative bg-fixed">
