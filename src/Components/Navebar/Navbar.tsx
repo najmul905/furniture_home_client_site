@@ -70,10 +70,11 @@ const Navbar = () => {
                 }
             </li>
             <motion.ul
+            hidden={!userTogol}
             initial={{opacity:0}}
             animate={userTogol?{opacity:1}:{}}
             transition={{duration:0.5}}
-            className={`absolute right-0  mt-60  w-48 bg-white border border-gray-200 rounded-md shadow-lg -z-10`}>
+            className={`absolute right-0  mt-48  w-48 bg-white border border-gray-200 rounded-md shadow-lg -z-10`}>
                 <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Profile</li>
                 <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Settings</li>
                { email?<li onClick={handelLogOut} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Logout</li>:
@@ -88,7 +89,7 @@ const Navbar = () => {
                 <div><img className='md:h-[50px] h-[40px]' src="https://i.postimg.cc/0jNDs17y/furniture-home.png" alt="" /></div>
                 <div
                 
-                className={` md:mt-0 transition-all bg-black  px-5 md:bg-transparent bg-opacity-70 ${isOpen?"opacity-100":"opacity-0"} md:opacity-100  mt-28  duration-500 -z-10 md:-z-0  md:px-2 pt-16 py-2 md:py-0 rounded-b-md absolute md:static right-0 md:max-w-none md:text-center w-full`}
+                className={` md:mt-0 transition-all bg-black  px-5 md:bg-transparent bg-opacity-70 ${isOpen?"opacity-100":"opacity-0 hidden"} md:opacity-100  mt-28  duration-500 -z-10 md:-z-0  md:px-2 pt-16 py-2 md:py-0 rounded-b-md absolute md:static right-0 md:max-w-none md:text-center w-full`}
                 >{link}</div>
                 <div>{option}</div>
             </div>

@@ -17,6 +17,7 @@ import { LazyProducts, LazyHome, LazyLatestFurniture } from "./LazyComponents";
 import CircularWithValueLabel from "./Components/Progress/Progress";
 import AdminHome from "./Pages/Dashboard/MainPage/AdminHome";
 import Card from "./Pages/Card/Card";
+import Order from "./Pages/Card/Order/Order";
 
 
 
@@ -84,6 +85,10 @@ export const router=createBrowserRouter([
            {
             path:"card",
             element:<Card></Card>
+           },
+           {
+            path:"order",
+            element:<Order></Order>
            }
            
         ]

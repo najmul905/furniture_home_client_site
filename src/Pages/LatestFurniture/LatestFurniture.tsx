@@ -1,9 +1,22 @@
 import Footer from "../../Components/Footer/Footer";
 import { useGetLatestProductsQuery } from "../../Redux/features/api/baseApi";
 import { motion } from 'framer-motion';
+import { useAppDispatch } from "../../Redux/store";
+import { addCard } from "../../Redux/features/addCard/addCard";
 
 const LatestFurniture = () => {
     const { data } = useGetLatestProductsQuery()
+    interface Data{
+        Name:string,
+        Image:string,
+        Price:number,
+        About:string,
+        _id:string|number
+       }
+       const dispatch=useAppDispatch()
+       const handelAddToCard=(data:Data)=>{
+             dispatch(addCard(data))
+       }
     return (
         <div className="pt-20 ">
             <div style={{ backgroundImage: `url("https://i.ibb.co.com/1sctGFR/modern-living-room-furniture-design-ipc500.jpg")` }} className=" bg-cover mb-5  overflow-hidden md:my-20 mx-4 md:mx-36 relative bg-fixed">
@@ -35,7 +48,9 @@ const LatestFurniture = () => {
                                 <p className="text-justify line-clamp-2 my-3">{Data.About}</p>
 
                                 <div>
-                                    <button className="px-2 border-2 font-semibold active:bg-black active:text-white border-orange-500  rounded-full">Add to Card</button>
+                                    <button 
+                                    onClick={()=>handelAddToCard(Data)}
+                                    className="px-2 border-2 font-semibold active:bg-black active:text-white border-orange-500  rounded-full">Add to Card</button>
                                 </div>
                             </div>
                         </div>

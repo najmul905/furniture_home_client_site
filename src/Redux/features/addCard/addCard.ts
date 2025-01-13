@@ -1,13 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 interface product{
-    Name:string,
-    Category:string,
-    Image:string,
-    Price:number,
-    About:string,
-    Discount:number,
-    _id:string|number
+    Name?:string,
+    Category?:string,
+    Image?:string,
+    Price?:number,
+    About?:string,
+    Discount?:number,
+    _id?:string|number,
+    Date?:string
 }
 interface localStorageState{
     products:product[]
@@ -24,8 +25,12 @@ export const addCardSlice=createSlice({
         addCard:(state,action:PayloadAction<product>)=>{
             state.products.push(action.payload)
             localStorage.setItem("products",JSON.stringify(state.products))
+        },
+        removeProduct:(state,action:PayloadAction<string|number>)=>{
+            state.products = state.products.filter(product => product._id !== action.payload);
+            localStorage.setItem("products", JSON.stringify(state.products));
         }
     }
 })
 
-export const {addCard}=addCardSlice.actions
+export const {addCard,removeProduct}=addCardSlice.actions

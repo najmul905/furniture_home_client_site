@@ -1,17 +1,25 @@
 import { Rating } from "@mui/material";
 import { useGetBestSellingQuery } from "../../Redux/features/api/baseApi";
 import {motion} from "framer-motion"
+import { useAppDispatch } from "../../Redux/store";
+import { addCard } from "../../Redux/features/addCard/addCard";
 
 const BestSelling = () => {
 
-    const {data = [],isError,isLoading}=useGetBestSellingQuery();
-   if(isError){
-    <div>error</div>
-   }
-   if(isLoading){
-    <div>Loading....</div>
-   }
-    
+    interface Data{
+        Name:string,
+        Image:string,
+        Price:number,
+       Ratings:number,
+        _id:string|number
+       }
+    const {data = [],}=useGetBestSellingQuery();
+    console.log(data)
+  
+   const dispatch=useAppDispatch()
+    const handelAddToCard=(Data:Data)=>{
+        dispatch(addCard(Data))
+    }
     return (
         <div>
             {/* title */}
@@ -45,7 +53,8 @@ const BestSelling = () => {
                          transition={{delay:0.40,duration:1}}
                         >$ {d.Price}</motion.p>
                         </div>
-                        <motion.button
+                        <motion.button 
+                        onClick={()=>handelAddToCard(d)}
                          initial={{opacity:0, y:20}}
                          whileInView={{opacity:1, y:0}}
                          transition={{delay:0.90,duration:1}}

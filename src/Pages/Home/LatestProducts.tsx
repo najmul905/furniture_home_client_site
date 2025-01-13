@@ -2,17 +2,31 @@
 import { useGetLatestProductsQuery } from "../../Redux/features/api/baseApi";
 import { Link, useNavigate } from "react-router-dom";
 import {motion} from "framer-motion"
+import { useAppDispatch } from "../../Redux/store";
+import { addCard } from "../../Redux/features/addCard/addCard";
 
 const LatestProducts = () => {
     // const [visibleItem,setVisibleItem]=useState(4)
+    interface Data{
+      Name:string,
+      Image:string,
+      Price:number,
+      About:string,
+      _id:string|number
+     }
     const visibleItem:number=8
     const {data}=useGetLatestProductsQuery()
+    console.log(data)
     const navigate =useNavigate()
     const handleClick = () => {
       navigate("/latestFurniture");
       // Scroll to the top of the page
       window.scrollTo(0, 0);
     };
+    const dispatch=useAppDispatch()
+    const handelAddToCard=(Data:Data)=>{
+      dispatch(addCard(Data))
+    }
   
     return (
         <div>
@@ -35,7 +49,9 @@ const LatestProducts = () => {
                 <h3 className="text-16px">Date: <span className="text-[#d48217]">{Data.Date}</span></h3>
                 <p className="text-justify line-clamp-2 my-3">{Data.About}</p>
                 <div>
-                  <button className="px-2 border-2 font-semibold active:bg-black active:text-white border-orange-500 rounded-full">Add to Card</button>
+                  <button
+                  onClick={()=>handelAddToCard(Data)}
+                  className="px-2 border-2 font-semibold active:bg-black active:text-white border-orange-500 rounded-full">Add to Card</button>
                 </div>
               </div>
             </motion.div>

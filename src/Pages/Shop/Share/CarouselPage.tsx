@@ -25,10 +25,12 @@ const CarouselPage = () => {
 
 
   const pre = useCallback(() => {
+    if (data.length === 0) return;
     setCur((cur) => (cur === 0 ? data.length - 1 : cur - 1));
   }, [data]);
-
+  
   const next = useCallback(() => {
+    if (data.length === 0) return;
     setCur((cur) => (cur === data.length - 1 ? 0 : cur + 1));
   }, [data]);
 
@@ -48,8 +50,8 @@ const CarouselPage = () => {
         style={{ transform: `translateX(-${cur * 100}%)` }}
       >
         {data?.map((item) => (
-          <div className="w-full h-60 flex-shrink-0" key={item._id}>
-            <img className="w-full h-60 object-cover" src={item.image} alt="" />
+          <div className="w-full md:h-60 flex-shrink-0" key={item._id}>
+            <img className="w-full md:h-60 object-cover" src={item.image} alt="" />
            
           </div>
 
@@ -57,7 +59,7 @@ const CarouselPage = () => {
       </div>
 
       {/* arrow buttons */}
-      <div className="absolute inset-0 flex items-center justify-between mx-8">
+      <div className="absolute inset-0 flex items-center justify-between md:mx-8 mx-4">
         <button onClick={pre}>
           <IoIosArrowDropleftCircle size={25} className="text-white active:text-black" />
         </button>

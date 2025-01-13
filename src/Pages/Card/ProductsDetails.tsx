@@ -1,11 +1,25 @@
 import { useSelector } from "react-redux";
-import { RootState } from "../../Redux/store";
+import { RootState, useAppDispatch } from "../../Redux/store";
+import { MdDelete } from "react-icons/md";
+import { removeProduct } from "../../Redux/features/addCard/addCard";
+
 
 const ProductsDetails = () => {
     const Data=useSelector((state:RootState)=>state.addCardSlice.products)
-    console.log(Data)
+    const dispatch=useAppDispatch()
+
+    const handelDelete=(data:string|number|undefined=undefined)=>{
+        if(data!=undefined){
+            dispatch(removeProduct(data))
+        }
+        else{
+            console.log("Your data is Undefined")
+        }
+        
+    }
+
     return (
-        <div className="bg-red-300">
+        <div className="bg-[#f7b054] h-screen overflow-y-scroll">
             <div className="overflow-x-auto">
   <table className="table">
     {/* head */}
@@ -42,7 +56,8 @@ const ProductsDetails = () => {
           </td>
           <td className="">${data.Price}</td>
           <th>
-            <button className="btn btn-ghost btn-xs">Delete</button>
+            <button onClick={()=>handelDelete(data._id)} className="text-red-600">< MdDelete size={20} />
+            </button>
           </th>
         </tr>
       </tbody>

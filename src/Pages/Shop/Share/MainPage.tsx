@@ -3,7 +3,7 @@ import Products from './Products';
 
 const MainPage = () => {
     return (
-        <div className='pt-20 ml-[20vw] px-12'>
+        <div className='pt-20 ml-[20vw] md:px-12 px-2 '>
             <CarouselPage></CarouselPage>
             <div className='mt-12'>
             <Products></Products>

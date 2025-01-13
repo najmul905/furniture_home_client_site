@@ -2,17 +2,32 @@ import { Link, useNavigate } from "react-router-dom";
 import { useGetProductsDataQuery } from "../../Redux/features/api/baseApi";
 import {motion} from "framer-motion"
 import SkeletonUI from "../../Components/Skeleton/Skeleton";
+import { useAppDispatch } from "../../Redux/store";
+import { addCard } from "../../Redux/features/addCard/addCard";
 
 const FurnitureProducts = () => {
     const {data,isLoading}=useGetProductsDataQuery()
     const offerData = data?.filter((item) => item.Discount > 5);
     const visibleItem:number=8;
-
+    interface Data{
+        Name:string,
+        Category:string,
+        Image:string,
+        Price:number,
+        About:string,
+        Discount:number,
+        _id:string|number
+       }
     const navigate =useNavigate()
     const handleClick = () => {
       navigate("/offer");
       window.scrollTo(0, 0);
     };
+
+    const dispatch=useAppDispatch()
+    const handelAddToCard=(data:Data)=>{
+        dispatch(addCard(data))
+    }
    
     return (
         <div>
@@ -37,7 +52,9 @@ const FurnitureProducts = () => {
                              whileInView={{opacity:1, x:0}}
                              transition={{delay:0.50,duration:1}}
                             className=" absolute text-[11px] top-0 right-0 m-2 bg-slate-700 px-2 rounded-xl text-white font-semibold italic">{Data.Discount}% off</motion.h1>
-                            <div className=" mt-5"><button  className="px-2 border-2 font-semibold active:bg-black active:text-white border-orange-500 rounded-full">Add to Card</button></div>
+                            <div className=" mt-5"><button 
+                            onClick={()=>handelAddToCard(Data)}
+                            className="px-2 border-2 font-semibold active:bg-black active:text-white border-orange-500 rounded-full">Add to Card</button></div>
                             </div>
 
                         </motion.div>

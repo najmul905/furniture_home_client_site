@@ -1,7 +1,7 @@
 
 const ProductsSkeleton = () => {
     return (
-        <div className="grid grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-4 grid-cols-2 gap-6">
             <div className="border">
                 <div className="skeleton w-full h-36 rounded-none"></div>
                 <div className="skeleton w-full h-2 mt-3"></div>

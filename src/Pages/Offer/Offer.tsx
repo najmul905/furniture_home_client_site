@@ -1,10 +1,24 @@
 import Footer from "../../Components/Footer/Footer";
 import { useGetProductsDataQuery } from "../../Redux/features/api/baseApi";
 import {motion} from "framer-motion"
+import { useAppDispatch } from "../../Redux/store";
+import { addCard } from "../../Redux/features/addCard/addCard";
 
 const Offer = () => {
     const {data}=useGetProductsDataQuery()
     const offerData = data?.filter((item) => item.Discount > 5);
+    const dispatch=useAppDispatch()
+    interface Data{
+        Name:string,
+        Category:string,
+        Image:string,
+        Price:number,
+        About:string,
+        Discount:number,
+        _id:string|number
+       }
+    const handelAddToCard=(data:Data)=>
+        dispatch(addCard(data))
     return (
         <div className="pt-20">
             <div style={{ backgroundImage: `url("https://i.ibb.co.com/1sctGFR/modern-living-room-furniture-design-ipc500.jpg")` }} className=" bg-cover  my-20 mx-36 relative bg-fixed">
@@ -35,7 +49,9 @@ const Offer = () => {
                             <h1 className=""><span className="text-[12px] font-bold">Discount Price:</span> <span className="text-[#bc7c28] font-semibold">${Data.Price-(Data.Price*Data.Discount/100)}</span> </h1>
                             <h1 className=" absolute top-0 right-0 m-2 bg-slate-700 px-2 rounded-xl text-white font-semibold italic">{Data.Discount}% off</h1>
                             <div>
-                            <button className="px-2 border-2 font-semibold active:bg-black active:text-white border-orange-500 rounded-full my-4">Add to Card</button>
+                            <button 
+                            onClick={()=>handelAddToCard(Data)}
+                            className="px-2 border-2 font-semibold active:bg-black active:text-white border-orange-500 rounded-full my-4">Add to Card</button>
                             </div>
                             </div>
 
