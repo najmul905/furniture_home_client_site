@@ -63,8 +63,22 @@ export const baseApi=createApi({
                 method:"POST",
                 body:data
             })
+        }),
+        addOrderProducts:builder.mutation({
+            query:(data)=>({
+                url:"orderProducts",
+                method:"POST",
+                body:data
+            })
+        }),
+        addUser:builder.mutation({
+            query:(data)=>({
+                url:"users",
+                method:"POST",
+                body:data
+            })
         })
     })
 })
 
- export const {useGetBestSellingQuery,useGetLatestProductsQuery,useGetCategoryQuery,useAddProductsMutation,useGetProductsDataQuery,useAddLatestProductMutation}=baseApi
+ export const {useGetBestSellingQuery,useGetLatestProductsQuery,useGetCategoryQuery,useAddProductsMutation,useGetProductsDataQuery,useAddLatestProductMutation,useAddOrderProductsMutation,useAddUserMutation}=baseApi

@@ -4,7 +4,7 @@ import { useAppDispatch } from "./Redux/store";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./Components/Firebase/Firebase";
-import { setUser } from "./Redux/features/userdataSlice/userdataSlice";
+import { setUser } from "./Redux/features/userSlice/userSlice";
 // import BackDrop from "./Components/Backdrop/Backdrop";
 
 
@@ -14,7 +14,7 @@ const App = () => {
 
   useEffect(() => {
       const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-       
+       console.log(currentUser)
           if (currentUser) {
               dispatch(
                   setUser({

@@ -9,7 +9,7 @@ import { RootState } from '../../Redux/store';
 import BackDrop from '../../Components/Backdrop/Backdrop';
 
 const Home = () => {
-    const  {isLoading}=useSelector((state:RootState)=>state.userdataSlice)
+    const  {isLoading}=useSelector((state:RootState)=>state.userSlice)
 
     return (
         <div className=''>

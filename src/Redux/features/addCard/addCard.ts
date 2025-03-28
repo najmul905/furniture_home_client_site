@@ -29,8 +29,12 @@ export const addCardSlice=createSlice({
         removeProduct:(state,action:PayloadAction<string|number>)=>{
             state.products = state.products.filter(product => product._id !== action.payload);
             localStorage.setItem("products", JSON.stringify(state.products));
+        },
+        clearCard:(state)=>{
+            state.products=[]
+            localStorage.removeItem("products")
         }
     }
 })
 
-export const {addCard,removeProduct}=addCardSlice.actions
+export const {addCard,removeProduct,clearCard}=addCardSlice.actions

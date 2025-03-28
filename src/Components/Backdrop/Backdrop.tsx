@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../Redux/store';
 import CircularWithValueLabel from '../Progress/Progress';
 const BackDrop = () => {
-    const  {isLoading}=useSelector((state:RootState)=>state.userdataSlice)
+    const  {isLoading}=useSelector((state:RootState)=>state.userSlice)
 
     return (
         <div>

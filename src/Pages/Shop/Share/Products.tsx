@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import ProductsSkeleton from './ProductsSkeleton';
 import {  useAppDispatch } from '../../../Redux/store';
 import { addCard } from '../../../Redux/features/addCard/addCard';
+import Swal from 'sweetalert2';
 // import Footer from '../../../Components/Footer/Footer';
 
 const Products = () => {
@@ -17,13 +18,14 @@ const Products = () => {
     _id:string|number
    }
     const {category}=useParams()
+    // const {AllProducts}=useParams()
     const { data,isLoading } = useGetProductsDataQuery()
     const [CategoryData,setCategoryData]=useState<Data[]>([])
 
 
     useEffect(() => {
         if (data) {
-          if (!category) {
+          if (!category || category === "All Products") {
             // If no category is provided or if it's "all", set all data
             setCategoryData(data);
           } else {
@@ -38,6 +40,13 @@ const Products = () => {
 
    const handelAddCard=(data:Data)=>{
     dispatch(addCard(data))
+    Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Your work has been saved",
+        showConfirmButton: false,
+        timer: 500
+      });
    }
     return (
        <div>

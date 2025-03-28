@@ -19,16 +19,16 @@ const underlineMapping: Record<ValidPaths, string> = {
 };
 
 const Navbar = () => {
-    
 
     const location = useLocation();
     const currentPath = location.pathname as ValidPaths; 
     const underline: string = underlineMapping[currentPath] || "";
     const [isOpen,setIsOpen]=useState(false)
     const [userTogol, setUserTagol] = useState(false);
-    const  {email,photoURL}=useSelector((state:RootState)=>state.userdataSlice)
+    const  {email,image}=useSelector((state:RootState)=>state.userSlice)
     const products=useSelector((state:RootState)=>state.addCardSlice.products)
     console.log(products.length)
+    console.log(email)
     
     const handelLogOut = () => {
         signOut(auth).catch((error) => console.error("Logout failed: ", error));
@@ -42,7 +42,7 @@ const Navbar = () => {
             <Link to="/shope">
                 <li className={`cursor-pointer hover:underline ${underline === "shop" ? "underline text-[18px]" : ""}`}>Shope</li>
             </Link>
-            <Link to='/dashboard'>
+            <Link hidden={!email} className='' to='/dashboard'>
                 <li className={`cursor-pointer hover:underline ${underline === "dashboard" ? "underline text-[18px]" : ""}`}>Dashboard</li>
             </Link>
             <Link to='/latestFurniture'>
@@ -59,7 +59,7 @@ const Navbar = () => {
             </li></Link>
             <li onClick={() => setUserTagol(!userTogol)}>
             {email?
-                <div className='h-9 w-9 rounded-full'><img className='h-9 w-9 rounded-full cursor-pointer' src={photoURL??undefined}
+                <div className='h-9 w-9 rounded-full'><img className='h-9 w-9 rounded-full cursor-pointer' src={image??undefined}
                 alt="" /></div>:<FaUserCircle className='h-6 w-6 cursor-pointer' />}
             </li>
             <li onClick={()=>setIsOpen(!isOpen)} className='md:hidden'>
@@ -88,8 +88,8 @@ const Navbar = () => {
             <div className='flex items-center justify-between px-10 py-2 bg-slate-300'>
                 <div><img className='md:h-[50px] h-[40px]' src="https://i.postimg.cc/0jNDs17y/furniture-home.png" alt="" /></div>
                 <div
-                
-                className={` md:mt-0 transition-all bg-black  px-5 md:bg-transparent bg-opacity-70 ${isOpen?"opacity-100":"opacity-0 hidden"} md:opacity-100  mt-28  duration-500 -z-10 md:-z-0  md:px-2 pt-16 py-2 md:py-0 rounded-b-md absolute md:static right-0 md:max-w-none md:text-center w-full`}
+                hidden={isOpen}
+                className={` md:mt-0 transition-all bg-black  px-5 md:bg-transparent bg-opacity-70 ${isOpen?"opacity-100":"opacity-0 "} md:opacity-100  mt-28  duration-500 -z-10 md:-z-0  md:px-2 pt-16 py-2 md:py-0 rounded-b-md absolute md:static right-0 md:max-w-none md:text-center w-full`}
                 >{link}</div>
                 <div>{option}</div>
             </div>
