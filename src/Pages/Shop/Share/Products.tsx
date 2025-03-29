@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 // import Footer from '../../../Components/Footer/Footer';
 
 const Products = () => {
+    
    interface Data{
     Name:string,
     Category:string,

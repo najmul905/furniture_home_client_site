@@ -49,7 +49,7 @@ const AddLatestProducts = () => {
         //   console.log(data)
     }
     return (
-        <div className="w-full mx-12  pt-20">
+        <div className=" w-full mx-12  pt-20">
         <form onSubmit={handleSubmit(onSubmit)} className="w-full rounded-lg bg-slate-300 p-8" action="">
             <div className="flex mb-2 items-center justify-between gap-6">
                 <div className="w-full">

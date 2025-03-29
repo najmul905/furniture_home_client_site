@@ -18,6 +18,7 @@ import CircularWithValueLabel from "./Components/Progress/Progress";
 import AdminHome from "./Pages/Dashboard/MainPage/AdminHome";
 import Card from "./Pages/Card/Card";
 import Order from "./Pages/Card/Order/Order";
+import AllUsers from "./Pages/Dashboard/MainPage/AllUsers";
 
 
 
@@ -67,6 +68,10 @@ export const router=createBrowserRouter([
                 {
                     path:"addLatestProducts",
                     element:<AddLatestProducts></AddLatestProducts>
+                },
+                {
+                    path:"allUsers",
+                    element:<AllUsers></AllUsers>
                 }
             ]
            },

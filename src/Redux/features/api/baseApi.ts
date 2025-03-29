@@ -28,12 +28,20 @@ interface LatestProducts{
     Price:number,
     _id:string|number,
     Date:string
-    }    
+    }   
+    
+  interface Users{
+    name:string,
+    email:string,
+    image:string,
+    userStatus:string,
+    _id:string|number
+  }  
 
 export const baseApi=createApi({
     reducerPath: "api",
     baseQuery: fetchBaseQuery({baseUrl:'http://localhost:3000/'}),
-    tagTypes:['Products'],
+    tagTypes:['Products','Users'],
     endpoints:(builder)=>({
         getBestSelling:builder.query<BestSellingItem[],void>({
             query:()=>'best_selling'
@@ -45,6 +53,11 @@ export const baseApi=createApi({
             query:()=>"products",
             providesTags:["Products"]
         }),
+        getUsers:builder.query<Users[],void>({
+            query:()=>"users",
+            providesTags:["Users"]
+        })
+        ,
         getLatestProducts:builder.query<LatestProducts[],void>({
             query:()=>"latest_products"
         })
@@ -77,8 +90,17 @@ export const baseApi=createApi({
                 method:"POST",
                 body:data
             })
+        }),
+        deleteUser:builder.mutation({
+            query:(id)=>({
+                url:`user/${id}`,
+                method:"DELETE",
+                
+            }),
+            invalidatesTags:["Users"]
+            
         })
     })
 })
 
- export const {useGetBestSellingQuery,useGetLatestProductsQuery,useGetCategoryQuery,useAddProductsMutation,useGetProductsDataQuery,useAddLatestProductMutation,useAddOrderProductsMutation,useAddUserMutation}=baseApi
+ export const {useGetBestSellingQuery,useGetLatestProductsQuery,useGetCategoryQuery,useAddProductsMutation,useGetProductsDataQuery,useAddLatestProductMutation,useAddOrderProductsMutation,useAddUserMutation,useGetUsersQuery,useDeleteUserMutation}=baseApi
