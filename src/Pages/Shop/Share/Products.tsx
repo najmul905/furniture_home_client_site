@@ -5,6 +5,7 @@ import ProductsSkeleton from './ProductsSkeleton';
 import {  useAppDispatch } from '../../../Redux/store';
 import { addCard } from '../../../Redux/features/addCard/addCard';
 import Swal from 'sweetalert2';
+import {motion} from "framer-motion"
 // import Footer from '../../../Components/Footer/Footer';
 
 const Products = () => {
@@ -23,6 +24,9 @@ const Products = () => {
     const { data,isLoading } = useGetProductsDataQuery()
     const [CategoryData,setCategoryData]=useState<Data[]>([])
 
+    // ViewValue
+    const [viewValue,setViewValue]=useState<string | number | null>(null)
+    console.log(viewValue)
 
     useEffect(() => {
         if (data) {
@@ -49,13 +53,19 @@ const Products = () => {
         timer: 500
       });
    }
+
     return (
        <div>
          <div hidden={isLoading} className='grid md:grid-cols-4 grid-cols-2 md:gap-6 gap-3'>
             {
                 CategoryData?.map((Data, index) => (
-                    <div key={index}>
-                        <div className="hover:rounded-lg bg-base-100 border my-5 hover:shadow-xl">
+                    <div
+                   
+                    key={index}>
+                        <div
+                         onMouseEnter={()=>setViewValue(Data._id)}
+                         onMouseLeave={()=>setViewValue(null)}
+                        className="overflow-hidden hover:rounded-lg bg-base-100 border my-5 hover:shadow-md">
                             <figure className=''>
                                 <img
                                     className=' md:h-44 h-36 w-full'
@@ -67,8 +77,22 @@ const Products = () => {
                                 <h2 className='mt-2 '>$<span className='text-[#f7b054] text-[18px]'>{Data.Price}</span></h2>
                                 {/* <p className='line-clamp-2'>{Data.About}</p> */}
                                 <div className="md:flex  items-center justify-between py-2 ">
-                                    <button onClick={()=>handelAddCard(Data)} className="text-[12px] md:text-[14px] px-2 border-2 font-semibold bg-white active:bg-black active:text-white border-orange-500 rounded-full">Add to card</button>
-                                    <button className="m-2 md:m-0 md:mt-0 text-[12px] md:text-[14px] px-2 border-2 font-semibold bg-white active:bg-black active:text-white border-orange-500 rounded-full">Details</button>
+                                    <motion.button
+                                    initial={{ y: 50, opacity: 0 }}
+                                    animate={{
+                                      y: viewValue === Data._id ? 0 : 50,
+                                      opacity: viewValue === Data._id ? 1 : 0
+                                    }}
+                                    transition={{ duration:.75, ease: "easeInOut" }}
+                                    onClick={()=>handelAddCard(Data)} className="text-[12px] md:text-[14px] px-2 border-2 font-semibold bg-white active:bg-black active:text-white border-orange-500 rounded-full">Add to card</motion.button>
+                                    <motion.button
+                                    initial={{ y: 50, opacity: 0 }}
+                                    animate={{
+                                      y: viewValue === Data._id ? 0 : 50,
+                                      opacity: viewValue === Data._id ? 1 : 0
+                                    }}
+                                    transition={{ duration:1, ease: "easeInOut" }}
+                                    className="m-2 md:m-0 md:mt-0 text-[12px] md:text-[14px] px-2 border-2 font-semibold bg-white active:bg-black active:text-white border-orange-500 rounded-full">Details</motion.button>
                                 </div>
                             </div>
                         </div>

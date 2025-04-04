@@ -4,6 +4,7 @@ import {motion} from "framer-motion"
 import SkeletonUI from "../../Components/Skeleton/Skeleton";
 import { useAppDispatch } from "../../Redux/store";
 import { addCard } from "../../Redux/features/addCard/addCard";
+import { useState } from "react";
 
 const FurnitureProducts = () => {
     const {data,isLoading}=useGetProductsDataQuery()
@@ -18,6 +19,9 @@ const FurnitureProducts = () => {
         Discount:number,
         _id:string|number
        }
+
+           const [viewValue,setViewValue]=useState<string | number | null>(null)
+       
     const navigate =useNavigate()
     const handleClick = () => {
       navigate("/offer");
@@ -38,6 +42,8 @@ const FurnitureProducts = () => {
                 {
                     offerData?.slice(0,visibleItem).map((Data,index)=>(
                         <motion.div
+                        onMouseEnter={()=>setViewValue(Data._id)}
+                        onMouseLeave={()=>setViewValue(null)}
                         initial={{scale:0.9, y:100}}
                         whileInView={{scale:1,y:0}}
                         transition={{duration:1,delay:0.3}}
@@ -52,9 +58,16 @@ const FurnitureProducts = () => {
                              whileInView={{opacity:1, x:0}}
                              transition={{delay:0.50,duration:1}}
                             className=" absolute text-[11px] top-0 right-0 m-2 bg-slate-700 px-2 rounded-xl text-white font-semibold italic">{Data.Discount}% off</motion.h1>
-                            <div className=" mt-5"><button 
+                            <div className=" mt-5"><motion.button
+                            
+                            initial={{ y: 50, opacity: 0 }}
+                            animate={{
+                              y: viewValue === Data._id ? 0 : 50,
+                              opacity: viewValue === Data._id ? 1 : 0
+                            }}
+                            transition={{ duration:.75, ease: "easeInOut" }}
                             onClick={()=>handelAddToCard(Data)}
-                            className="px-2 border-2 font-semibold active:bg-black active:text-white border-orange-500 rounded-full">Add to Card</button></div>
+                            className="px-2 border-2 font-semibold active:bg-black active:text-white border-orange-500 rounded-full">Add to Card</motion.button></div>
                             </div>
 
                         </motion.div>

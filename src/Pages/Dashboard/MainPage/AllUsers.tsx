@@ -1,15 +1,25 @@
-import { useDeleteUserMutation, useGetUsersQuery } from "../../../Redux/features/api/baseApi";
+import { useDeleteUserMutation, useGetUsersQuery, useUpdateUserStatusMutation } from "../../../Redux/features/api/baseApi";
 
 const AllUsers = () => {
     const {data,isLoading}=useGetUsersQuery()
     const [DeleteUser]=useDeleteUserMutation()
+    const [UpdateUser]=useUpdateUserStatusMutation()
     console.log(data,isLoading)
 
-    const handelUpdateUserStatus=(id:string|number)=>{
-        console.log(id)
-    }
+   
     const DeleteUer=(id:string|number)=>{
         DeleteUser(id)
+    }
+    const handelUpdateAdminStatus=(id:string|number)=>{
+      const status:string="Admin"
+      const data={status}
+      UpdateUser({id,data})
+      
+    }
+    const handelUpdateUserStatus=(id:string|number)=>{
+      const status:string="user"
+      const data={status}
+      UpdateUser({id,data})
     }
     return (
         <div className="pt-20">
@@ -38,7 +48,8 @@ const AllUsers = () => {
               <td className={`p-3 font-semibold ${user.userStatus === "Admin" ? "text-green-600" : user.userStatus === "Inactive" ? "text-red-600" : "text-yellow-500"}`}>
                 {user.userStatus}
               </td>
-              <td className="p-3"><button onClick={()=>handelUpdateUserStatus(user._id)} className="hover:underline">Make admin</button></td>
+              {user.userStatus=="user"?<td className="p-3"><button onClick={()=>handelUpdateAdminStatus(user._id)} className="hover:underline">Make admin</button></td>:
+              <td className="p-3"><button onClick={()=>handelUpdateUserStatus(user._id)} className="hover:underline">Make user</button></td>}
               <td className="p-3"><button onClick={()=>DeleteUer(user._id)} className="text-red-600 hover:underline">Delete</button></td>
             </tr>
           ))}

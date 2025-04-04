@@ -91,6 +91,15 @@ export const baseApi=createApi({
                 body:data
             })
         }),
+        UpdateUserStatus:builder.mutation({
+            query:({id,data})=>({
+                url:`user/${id}`,
+                method:"PATCH",
+                body:data
+            }),
+            invalidatesTags:["Users"]
+        })
+        ,
         deleteUser:builder.mutation({
             query:(id)=>({
                 url:`user/${id}`,
@@ -103,4 +112,4 @@ export const baseApi=createApi({
     })
 })
 
- export const {useGetBestSellingQuery,useGetLatestProductsQuery,useGetCategoryQuery,useAddProductsMutation,useGetProductsDataQuery,useAddLatestProductMutation,useAddOrderProductsMutation,useAddUserMutation,useGetUsersQuery,useDeleteUserMutation}=baseApi
+ export const {useGetBestSellingQuery,useGetLatestProductsQuery,useGetCategoryQuery,useAddProductsMutation,useGetProductsDataQuery,useAddLatestProductMutation,useAddOrderProductsMutation,useAddUserMutation,useGetUsersQuery,useDeleteUserMutation,useUpdateUserStatusMutation}=baseApi

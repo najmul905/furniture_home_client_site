@@ -3,9 +3,12 @@ import { useGetLatestProductsQuery } from "../../Redux/features/api/baseApi";
 import { motion } from 'framer-motion';
 import { useAppDispatch } from "../../Redux/store";
 import { addCard } from "../../Redux/features/addCard/addCard";
+import { useState } from "react";
 
 const LatestFurniture = () => {
     const { data } = useGetLatestProductsQuery()
+            const [viewValue,setViewValue]=useState<string | number | null>(null)
+    
     interface Data{
         Name:string,
         Image:string,
@@ -39,7 +42,10 @@ const LatestFurniture = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-10 md:mx-14 mx-2">
                 {
                     data?.map((Data, index) => (
-                        <div key={index} className="border ">
+                        <div
+                        onMouseEnter={()=>setViewValue(Data._id)}
+                        onMouseLeave={()=>setViewValue(null)}
+                        key={index} className="border overflow-hidden">
                             <img className="bg-slate-500 md:h-60 h-36 w-full" src={Data.Image} alt="" />
                             <div className="mx-5 py-4">
                                 <h2 className="text-[18px] font-bold">{Data.Name}</h2>
@@ -48,9 +54,15 @@ const LatestFurniture = () => {
                                 <p className="text-justify line-clamp-2 my-3">{Data.About}</p>
 
                                 <div>
-                                    <button 
+                                    <motion.button 
+                                     initial={{ y: 50, opacity: 0 }}
+                                     animate={{
+                                       y: viewValue === Data._id ? 0 : 50,
+                                       opacity: viewValue === Data._id ? 1 : 0
+                                     }}
+                                     transition={{ duration:.75, ease: "easeInOut" }}
                                     onClick={()=>handelAddToCard(Data)}
-                                    className="px-2 border-2 font-semibold active:bg-black active:text-white border-orange-500  rounded-full">Add to Card</button>
+                                    className="px-2 border-2 font-semibold active:bg-black active:text-white border-orange-500  rounded-full">Add to Card</motion.button>
                                 </div>
                             </div>
                         </div>

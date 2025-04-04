@@ -3,6 +3,7 @@ import { useGetBestSellingQuery } from "../../Redux/features/api/baseApi";
 import {motion} from "framer-motion"
 import { useAppDispatch } from "../../Redux/store";
 import { addCard } from "../../Redux/features/addCard/addCard";
+import { useState } from "react";
 
 const BestSelling = () => {
 
@@ -13,6 +14,9 @@ const BestSelling = () => {
        Ratings:number,
         _id:string|number
        }
+    const [viewValue,setViewValue]=useState<string | number | null>(null)
+
+
     const {data = [],}=useGetBestSellingQuery();
     console.log(data)
   
@@ -29,7 +33,10 @@ const BestSelling = () => {
         <div className="grid md:grid-cols-4 grid-cols-2 gap-4  mx-2 md:mx-12">
             {
                data.map(d=><div key={d._id}>
-                <div className=" ">
+                <div 
+                onMouseEnter={()=>setViewValue(d._id)}
+                onMouseLeave={()=>setViewValue(null)}
+                className="overflow-hidden ">
                    <div className="bg-slate-100 md:p-14">
                    <img className="md:h-[200px] h-[100px]  mx-auto " src={d.Image} alt="" />
                    </div>
@@ -55,9 +62,12 @@ const BestSelling = () => {
                         </div>
                         <motion.button 
                         onClick={()=>handelAddToCard(d)}
-                         initial={{opacity:0, y:20}}
-                         whileInView={{opacity:1, y:0}}
-                         transition={{delay:0.90,duration:1}}
+                        initial={{ y: 50, opacity: 0 }}
+                        animate={{
+                          y: viewValue === d._id ? 0 : 50,
+                          opacity: viewValue === d._id ? 1 : 0
+                        }}
+                        transition={{ duration:.75, ease: "easeInOut" }}
                         className="border-b-2 text-[12px] active:border-slate-600">ADD TO CARD</motion.button>
                     </motion.div>
                 </div>

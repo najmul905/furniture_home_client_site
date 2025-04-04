@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import {motion} from "framer-motion"
 import { useAppDispatch } from "../../Redux/store";
 import { addCard } from "../../Redux/features/addCard/addCard";
+import { useState } from "react";
 
 const LatestProducts = () => {
     // const [visibleItem,setVisibleItem]=useState(4)
@@ -14,6 +15,8 @@ const LatestProducts = () => {
       About:string,
       _id:string|number
      }
+    const [viewValue,setViewValue]=useState<string | number | null>(null)
+     
     const visibleItem:number=8
     const {data}=useGetLatestProductsQuery()
     console.log(data)
@@ -38,20 +41,29 @@ const LatestProducts = () => {
             {
           data?.slice(0, visibleItem).map((Data, index) => (
             <motion.div
+            onMouseEnter={()=>setViewValue(Data._id)}
+            onMouseLeave={()=>setViewValue(null)}
             initial={{scale:0.9, y:100}}
             whileInView={{scale:1,y:0}}
             transition={{duration:1,delay:0.3}}
-            key={index} className="border">
-              <img className="bg-slate-500 md:h-60 h-36 w-full" src={Data.Image} alt="" />
+            key={index} className="border rounded overflow-hidden">
+              <img className="bg-slate-500  md:h-60 h-36 w-full" src={Data.Image} alt="" />
               <div className="mx-5 py-4">
                 <h2 className="text-[18px] font-bold">{Data.Name}</h2>
                 <h3 className="my-2">$<span className="font-semibold text-[#bc7c28]">{Data.Price}</span></h3>
                 <h3 className="text-16px">Date: <span className="text-[#d48217]">{Data.Date}</span></h3>
                 <p className="text-justify line-clamp-2 my-3">{Data.About}</p>
                 <div>
-                  <button
+                  <motion.button
+
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{
+                    y: viewValue === Data._id ? 0 : 50,
+                    opacity: viewValue === Data._id ? 1 : 0
+                  }}
+                  transition={{ duration:.75, ease: "easeInOut" }}
                   onClick={()=>handelAddToCard(Data)}
-                  className="px-2 border-2 font-semibold active:bg-black active:text-white border-orange-500 rounded-full">Add to Card</button>
+                  className="px-2 border-2 font-semibold active:bg-black active:text-white border-orange-500 rounded-full">Add to Card</motion.button>
                 </div>
               </div>
             </motion.div>

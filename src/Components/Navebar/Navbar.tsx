@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../Redux/store';
 import { auth } from '../Firebase/Firebase';
 import { signOut } from 'firebase/auth';
+import { useGetUsersQuery } from '../../Redux/features/api/baseApi';
 
 
 type ValidPaths = "/" | "/shope" | "/dashboard" | "/latestFurniture";
@@ -19,6 +20,8 @@ const underlineMapping: Record<ValidPaths, string> = {
 };
 
 const Navbar = () => {
+        const {data,isLoading}=useGetUsersQuery()
+    console.log(isLoading,data)
 
     const location = useLocation();
     const currentPath = location.pathname as ValidPaths; 
@@ -30,6 +33,9 @@ const Navbar = () => {
     console.log(products.length)
     console.log(email)
     
+    const forUserStatus=data?.find(D=>D.email===email)
+    console.log(forUserStatus?.userStatus)
+
     const handelLogOut = () => {
         signOut(auth).catch((error) => console.error("Logout failed: ", error));
     };
@@ -42,7 +48,7 @@ const Navbar = () => {
             <Link to="/shope">
                 <li className={`cursor-pointer hover:underline ${underline === "shop" ? "underline text-[18px]" : ""}`}>Shope</li>
             </Link>
-            <Link hidden={!email} className='' to='/dashboard'>
+            <Link hidden={email === null || forUserStatus?.userStatus === "user"} className='' to='/dashboard'>
                 <li className={`cursor-pointer hover:underline ${underline === "dashboard" ? "underline text-[18px]" : ""}`}>Dashboard</li>
             </Link>
             <Link to='/latestFurniture'>

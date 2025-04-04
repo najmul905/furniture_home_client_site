@@ -115,7 +115,8 @@ const SingUp = () => {
   
 >
   {/* <CircularProgress color="inherit" /> */}
-  <CircularWithValueLabel></CircularWithValueLabel>
+        {error?<div className='text-red-500'>{error} <button onClick={()=>setLoading(!loading)} className='text-[12px] text-white bg-red-500 p-1 border rounded-full'>oK</button></div>:<CircularWithValueLabel></CircularWithValueLabel>}
+  
 </Backdrop>
         </div>
         </div>
