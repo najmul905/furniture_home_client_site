@@ -4,10 +4,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { RootState, useAppDispatch } from '../../Redux/store';
 import { LogInWithGoogle, signIn } from '../../Redux/features/userSlice/userSlice';
 import { useSelector } from 'react-redux';
-import { Alert } from '@mui/material';
-import { useEffect } from 'react';
+import { Alert, Backdrop } from '@mui/material';
+import { useEffect, useState } from 'react';
 import { useAddUserMutation } from '../../Redux/features/api/baseApi';
 import BackDrop from '../Backdrop/Backdrop';
+import CircularWithValueLabel from '../Progress/Progress';
 
 interface formData{
     Email:string,
@@ -17,10 +18,9 @@ const LogIn = () => {
     const navigate=useNavigate()
     const location=useLocation()
     const from=location.state?.from?.pathname||"/"
-    console.log(from)
     const {email,name,image, error}=useSelector((state:RootState)=>state.userSlice)
     const [addUser]=useAddUserMutation()
-    
+    const [loading,setLoading]=useState(false)
     useEffect(()=>{
         const userStatus:string="user"
         if(email && image && name){
@@ -35,9 +35,11 @@ const LogIn = () => {
     const dispatch=useAppDispatch()
     const {register, handleSubmit}=useForm<formData>()
     const onSubmit:SubmitHandler<formData>=data=>{
+        setLoading(true)
         const email=data.Email
         const password=data.Password
         dispatch(signIn({email,password}))
+        setLoading(false)
         navigate(from,{replace:true})
 
     }
@@ -65,7 +67,15 @@ const LogIn = () => {
         {error?<Alert severity="error">{error}</Alert>:""}
     </div>
     <div>
-        <BackDrop></BackDrop>
+    <BackDrop></BackDrop>
+    <Backdrop
+  sx={(theme) => ({ color: '#fff', zIndex: theme.zIndex.drawer + 1 })}
+  open={loading}
+  
+>
+  {/* <CircularProgress color="inherit" /> */}
+  <CircularWithValueLabel></CircularWithValueLabel>
+</Backdrop>
     </div>
         </div>
        

@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../Redux/store";
 import { MdDelete } from "react-icons/md";
 import { removeProduct } from "../../Redux/features/addCard/addCard";
+import Swal from "sweetalert2";
 
 
 const ProductsDetails = () => {
@@ -10,7 +11,24 @@ const ProductsDetails = () => {
 
     const handelDelete=(data:string|number|undefined=undefined)=>{
         if(data!=undefined){
-            dispatch(removeProduct(data))
+          Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              dispatch(removeProduct(data))
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+              });
+            }
+          });
         }
         else{
             console.log("Your data is Undefined")
@@ -19,17 +37,17 @@ const ProductsDetails = () => {
     }
 
     return (
-        <div className="bg-[#f7b054] h-screen overflow-y-scroll">
+        <div className="bg-slate-700 text-white h-screen overflow-y-scroll">
             <div className="overflow-x-auto">
   <table className="table">
     {/* head */}
     <thead>
-      <tr>
+      <tr className="text-white">
        
         <th>Name</th>
         <th>Details</th>
         <th>Price</th>
-        <th></th>
+        <th>Delete</th>
       </tr>
     </thead>
   {

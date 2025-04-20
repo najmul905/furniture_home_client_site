@@ -7,7 +7,7 @@ const Banner = () => {
         <div className="relative   bg-cover bg-fixed  " style={{backgroundImage:`url("https://i.postimg.cc/hG8vFycv/istockphoto-943910360-612x612.jpg")`,
         
         }}>
-            <div className="bg-black bg-opacity-50 pt-20 pb-5 overflow-hidden">
+            <div className="bg-black bg-opacity-30 pt-20 pb-5 overflow-hidden">
             <div className=" md:flex md:items-center pb-20 pt-20">
                 <motion.div
                  

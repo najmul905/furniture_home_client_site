@@ -4,7 +4,7 @@ import SelectPaymentMethod from "./SelectPaymentMethod";
 
 const Order = () => {
     return (
-        <div className="pt-20 bg-[#f7b054]">
+        <div className="pt-20 bg-slate-700 ">
             <div>
                 <h1 className="uppercase text-[20px] font-semibold text-white text-center">Secure CheckOut</h1>
             </div>

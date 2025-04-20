@@ -14,12 +14,17 @@ const CarouselPage = () => {
   }
 
   const [data, setData] = useState<Data[]>([]);
+  const [loading,setLoading]=useState(false)
 
   // Data fetching
   useEffect(() => {
+    setLoading(true)
     fetch('BestSelling.json')
       .then((res) => res.json())
-      .then((dt: Data[]) => setData(dt))
+      .then((dt: Data[]) => {
+        setData(dt)
+        setLoading(false)
+      })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
@@ -44,7 +49,9 @@ const CarouselPage = () => {
  
 
   return (
-    <div className="overflow-hidden rounded-lg relative">
+    
+    <div>
+      <div hidden={loading} className="overflow-hidden rounded-lg relative">
       <div
         className="= flex transition-transform ease-out duration-500"
         style={{ transform: `translateX(-${cur * 100}%)` }}
@@ -67,6 +74,10 @@ const CarouselPage = () => {
           <IoIosArrowDroprightCircle size={25} className="text-white active:text-black" />
         </button>
       </div>
+    </div>
+    <div hidden={!loading} className="skeleton w-full md:h-60 object-cover">
+
+    </div>
     </div>
   );
 };

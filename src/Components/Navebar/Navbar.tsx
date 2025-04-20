@@ -42,18 +42,12 @@ const Navbar = () => {
 
     const link = <>
         <ul className='md:flex md:items-center md:justify-center z-10 gap-8 text-[16px] text-white  md:text-black'>
-            <Link to='/'>
-                <li className={`cursor-pointer hover:underline ${underline === "home" ? "underline text-[18px]" : ""}`}>Home</li>
-            </Link>
-            <Link to="/shope">
-                <li className={`cursor-pointer hover:underline ${underline === "shop" ? "underline text-[18px]" : ""}`}>Shope</li>
-            </Link>
-            <Link hidden={email === null || forUserStatus?.userStatus === "user"} className='' to='/dashboard'>
-                <li className={`cursor-pointer hover:underline ${underline === "dashboard" ? "underline text-[18px]" : ""}`}>Dashboard</li>
-            </Link>
-            <Link to='/latestFurniture'>
-                <li className={`cursor-pointer hover:underline ${underline === "latest" ? "underline text-[18px]" : ""}`}>Latest Furniture</li>
-            </Link>
+            
+                <motion.li
+                 ><Link className={`cursor-pointer text-[15px] hover:underline ${underline === "home" ? "underline font-semibold" : ""}`} to='/'> Home</Link></motion.li>
+                <li ><Link className={`cursor-pointer text-[15px] hover:underline ${underline === "shop" ? "underline font-semibold" : ""}`} to='/shope'> Shope</Link></li>
+                <li hidden={email === null || forUserStatus?.userStatus === "user"} ><Link className={`cursor-pointer text-[15px] hover:underline ${underline === "dashboard" ? "underline font-semibold" : ""}`} to='/dashboard'> Dashboard</Link></li>
+                <li ><Link className={`cursor-pointer text-[15px] hover:underline ${underline === "latest" ? "underline font-semibold" : ""}`} to='/latestFurniture'> Latest Furniture</Link></li>
         </ul>
     </>;
 
@@ -92,7 +86,7 @@ const Navbar = () => {
     return (
         <div className='bg-slate-300 fixed top-0 w-full h-8 z-10'>
             <div className='flex items-center justify-between px-10 py-2 bg-slate-300'>
-                <div><img className='md:h-[50px] h-[40px]' src="https://i.postimg.cc/0jNDs17y/furniture-home.png" alt="" /></div>
+                <div className='md:h-[50px] h-[40px] overflow-hidden'><img className='md:h-[50px] h-[40px]' src="https://i.postimg.cc/0jNDs17y/furniture-home.png" alt="" /></div>
                 <div
                 hidden={isOpen}
                 className={` md:mt-0 transition-all bg-black  px-5 md:bg-transparent bg-opacity-70 ${isOpen?"opacity-100":"opacity-0 "} md:opacity-100  mt-28  duration-500 -z-10 md:-z-0  md:px-2 pt-16 py-2 md:py-0 rounded-b-md absolute md:static right-0 md:max-w-none md:text-center w-full`}

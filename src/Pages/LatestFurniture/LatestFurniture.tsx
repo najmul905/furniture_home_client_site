@@ -23,7 +23,7 @@ const LatestFurniture = () => {
     return (
         <div className="pt-20 ">
             <div style={{ backgroundImage: `url("https://i.ibb.co.com/1sctGFR/modern-living-room-furniture-design-ipc500.jpg")` }} className=" bg-cover mb-5  overflow-hidden md:my-20 mx-4 md:mx-36 relative bg-fixed">
-                <div className="flex items-center justify-center  gap-4 md:py-20 bg-black bg-opacity-50 h-40 md:h-72 text-white">
+                <div className="flex items-center justify-center  gap-4 md:py-20 bg-black bg-opacity-30 h-40 md:h-72 text-white">
                     <motion.hr
                         initial={{ x: -100, opacity: 0 }}
                         whileInView={{ x: 0, opacity: 1 }}

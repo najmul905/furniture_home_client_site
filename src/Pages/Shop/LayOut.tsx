@@ -1,0 +1,13 @@
+import Category from "./Share/Category";
+import Products from "./Share/Products";
+
+const LayOut = () => {
+    return (
+        <div className="flex">
+            <div className="h-screen sticky top-0 overflow-y-scroll w-72"><Category></Category></div>
+            <div className="flex-1 mx-20"><Products></Products></div>
+        </div>
+    );
+};
+
+export default LayOut;

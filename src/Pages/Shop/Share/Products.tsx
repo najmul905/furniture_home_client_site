@@ -6,6 +6,7 @@ import {  useAppDispatch } from '../../../Redux/store';
 import { addCard } from '../../../Redux/features/addCard/addCard';
 import Swal from 'sweetalert2';
 import {motion} from "framer-motion"
+import CarouselPage from './CarouselPage';
 // import Footer from '../../../Components/Footer/Footer';
 
 const Products = () => {
@@ -55,8 +56,9 @@ const Products = () => {
    }
 
     return (
-       <div>
-         <div hidden={isLoading} className='grid md:grid-cols-4 grid-cols-2 md:gap-6 gap-3'>
+       <div className='pt-20'>
+        <CarouselPage></CarouselPage>
+         <div hidden={isLoading} className='grid md:grid-cols-4 grid-cols-2 md:gap-6 gap-3 mt-5'>
             {
                 CategoryData?.map((Data, index) => (
                     <div
@@ -65,7 +67,7 @@ const Products = () => {
                         <div
                          onMouseEnter={()=>setViewValue(Data._id)}
                          onMouseLeave={()=>setViewValue(null)}
-                        className="overflow-hidden hover:rounded-lg bg-base-100 border my-5 hover:shadow-md">
+                        className="overflow-hidden hover:rounded-lg bg-base-100 border  hover:shadow-md">
                             <figure className=''>
                                 <img
                                     className=' md:h-44 h-36 w-full'

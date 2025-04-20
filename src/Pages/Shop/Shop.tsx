@@ -1,17 +1,10 @@
-import Category from './Share/Category';
-import MainPage from './Share/MainPage';
-import BackDrop from '../../Components/Backdrop/Backdrop';
+
+import LayOut from './LayOut';
 
 const Shop = () => {
     return (
         <div>
-            <div className=' flex '>
-            <Category ></Category>
-           <MainPage></MainPage>
-        </div>
-        <div>
-            <BackDrop></BackDrop>
-        </div>
+            <LayOut></LayOut>
         </div>
     );
 };
