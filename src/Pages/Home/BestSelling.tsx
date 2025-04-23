@@ -46,18 +46,21 @@ const BestSelling = () => {
                         <motion.h1
                          initial={{opacity:0, y:20}}
                          whileInView={{opacity:1, y:0}}
+                         viewport={{ once: true, amount: 0.8 }}
                          transition={{delay:0.30,duration:1}}
                         className="font-bold">{d.Name}</motion.h1>
                         <div className="my-4">
                        <motion.div
                         initial={{opacity:0, y:50}}
                         whileInView={{opacity:1, y:0}}
+                        viewport={{ once: true, amount: 0.8 }}
                         transition={{delay:0.30,duration:1}}
                        > <Rating name="read-only" value={d.Ratings} readOnly size="small" /></motion.div>
                         <motion.p
-                         initial={{opacity:0, y:70}}
-                         whileInView={{opacity:1, y:0}}
-                         transition={{delay:0.40,duration:1}}
+                          initial={{opacity:0, y:20}}
+                          whileInView={{opacity:1, y:0}}
+                          viewport={{ once: true, amount: 0.8 }}
+                          transition={{delay:0.40,duration:1}}
                         >$ {d.Price}</motion.p>
                         </div>
                         <motion.button 
@@ -67,7 +70,7 @@ const BestSelling = () => {
                           y: viewValue === d._id ? 0 : 50,
                           opacity: viewValue === d._id ? 1 : 0
                         }}
-                        transition={{ duration:.75, ease: "easeInOut" }}
+                        transition={{ duration:.50, ease: "easeInOut" }}
                         className="border-b-2 text-[12px] active:border-slate-600">ADD TO CARD</motion.button>
                     </motion.div>
                 </div>

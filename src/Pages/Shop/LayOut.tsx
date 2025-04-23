@@ -4,8 +4,8 @@ import Products from "./Share/Products";
 const LayOut = () => {
     return (
         <div className="flex">
-            <div className="h-screen sticky top-0 overflow-y-scroll w-72"><Category></Category></div>
-            <div className="flex-1 mx-20"><Products></Products></div>
+            <div className="h-screen sticky top-0 overflow-y-scroll w-[20vw]"><Category></Category></div>
+            <div className="flex-1 mx-5 md:mx-20"><Products></Products></div>
         </div>
     );
 };

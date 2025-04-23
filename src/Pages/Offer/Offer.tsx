@@ -61,7 +61,7 @@ const Offer = () => {
                               y: viewValue === Data._id ? 0 : 50,
                               opacity: viewValue === Data._id ? 1 : 0
                             }}
-                            transition={{ duration:.75, ease: "easeInOut" }}
+                            transition={{ duration:.50, ease: "easeInOut" }}
                             onClick={()=>handelAddToCard(Data)}
                             className="px-2 border-2 font-semibold active:bg-black active:text-white border-orange-500 rounded-full my-4">Add to Card</motion.button>
                             </div>

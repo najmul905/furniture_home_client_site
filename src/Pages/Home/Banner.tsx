@@ -4,10 +4,10 @@ import {motion} from "framer-motion"
 
 const Banner = () => {
     return (
-        <div className="relative   bg-cover bg-fixed  " style={{backgroundImage:`url("https://i.postimg.cc/hG8vFycv/istockphoto-943910360-612x612.jpg")`,
+        <div className="relative   bg-cover bg-fixed  " style={{backgroundImage:`url("https://i.ibb.co.com/LXWBNyxh/istockphoto-943910360-612x612.jpg")`,
         
         }}>
-            <div className="bg-black bg-opacity-30 pt-20 pb-5 overflow-hidden">
+            <div className="bg-black bg-opacity-30  pb-5 overflow-hidden">
             <div className=" md:flex md:items-center pb-20 pt-20">
                 <motion.div
                  
@@ -34,9 +34,9 @@ const Banner = () => {
                 <motion.div
                 initial={{y:-100,opacity:0}}
                 animate={{y:0,opacity:1}}
-                transition={{duration:2}}
+                transition={{duration:2 }}
                 >
-                <img src="https://i.postimg.cc/T24QT0Q6/story-pic-update.png" alt="" />
+                <img src="https://i.postimg.cc/T24QT0Q6/story-pic-update.pnghttps://i.ibb.co.com/7Nr9JKFG/story-pic-update.png" alt="" />
                 </motion.div>
             </div>
             {/* second section */}

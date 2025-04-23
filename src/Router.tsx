@@ -8,12 +8,12 @@ import AddProducts from "./Pages/Dashboard/MainPage/AddProducts";
 import AddLatestProducts from "./Pages/Dashboard/MainPage/AddLatestProducts";
 // import AllProducts from "./Pages/Shop/Share/AllProducts";
 import MainPage from "./Pages/Shop/Share/MainPage";
-import Offer from "./Pages/Offer/Offer";
+// import Offer from "./Pages/Offer/Offer";
 import LogIn from "./Components/LogIn_SingIn page/LogIn";
 import SingUp from "./Components/LogIn_SingIn page/SingIn";
 import {  Suspense } from "react";
 // import SkeletonUI from "./Components/Skeleton/Skeleton";
-import { LazyProducts, LazyHome, LazyLatestFurniture } from "./LazyComponents";
+import { LazyProducts, LazyHome, LazyLatestFurniture, LazyOffer } from "./LazyComponents";
 import CircularWithValueLabel from "./Components/Progress/Progress";
 import AdminHome from "./Pages/Dashboard/MainPage/AdminHome";
 import Card from "./Pages/Card/Card";
@@ -29,11 +29,8 @@ export const router=createBrowserRouter([
         children:[
             {
                 path:'/',
-                element:(
-                    <Suspense fallback={<CircularWithValueLabel></CircularWithValueLabel>}>
-                       <LazyHome></LazyHome>
-                    </Suspense>
-                )
+                element: <Suspense fallback={<div>Loading</div>}><LazyHome></LazyHome> </Suspense> 
+                   
             },
             {
                 path:'shope',
@@ -85,7 +82,9 @@ export const router=createBrowserRouter([
            },
            {
             path:"offer",
-            element:<Offer></Offer>
+            element:<Suspense fallback={<CircularWithValueLabel></CircularWithValueLabel>}>
+                <LazyOffer></LazyOffer>
+                </Suspense>
            },
            {
             path:"card",

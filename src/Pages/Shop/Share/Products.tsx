@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import ProductsSkeleton from './ProductsSkeleton';
 import {  useAppDispatch } from '../../../Redux/store';
 import { addCard } from '../../../Redux/features/addCard/addCard';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 import {motion} from "framer-motion"
 import CarouselPage from './CarouselPage';
 // import Footer from '../../../Components/Footer/Footer';
@@ -45,14 +45,8 @@ const Products = () => {
       const dispatch=useAppDispatch()
 
    const handelAddCard=(data:Data)=>{
-    dispatch(addCard(data))
-    Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Your work has been saved",
-        showConfirmButton: false,
-        timer: 500
-      });
+    const Quantity=1
+    dispatch(addCard({...data,Quantity}))
    }
 
     return (
@@ -85,7 +79,7 @@ const Products = () => {
                                       y: viewValue === Data._id ? 0 : 50,
                                       opacity: viewValue === Data._id ? 1 : 0
                                     }}
-                                    transition={{ duration:.75, ease: "easeInOut" }}
+                                    transition={{ duration:.50, ease: "easeInOut" }}
                                     onClick={()=>handelAddCard(Data)} className="text-[12px] md:text-[14px] px-2 border-2 font-semibold bg-white active:bg-black active:text-white border-orange-500 rounded-full">Add to card</motion.button>
                                     <motion.button
                                     initial={{ y: 50, opacity: 0 }}
@@ -93,7 +87,7 @@ const Products = () => {
                                       y: viewValue === Data._id ? 0 : 50,
                                       opacity: viewValue === Data._id ? 1 : 0
                                     }}
-                                    transition={{ duration:1, ease: "easeInOut" }}
+                                    transition={{ duration:0.75, ease: "easeInOut" }}
                                     className="m-2 md:m-0 md:mt-0 text-[12px] md:text-[14px] px-2 border-2 font-semibold bg-white active:bg-black active:text-white border-orange-500 rounded-full">Details</motion.button>
                                 </div>
                             </div>

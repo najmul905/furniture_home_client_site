@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 const ProductsInfo = () => {
     const Data=useSelector((state:RootState)=>state.addCardSlice.products)
     // const prices: number[] = Data.map(product => product.Price);
-    const totalAmount: string = (Data || []).reduce((sum, item) => sum + (Number(item.Price) || 0), 0).toFixed(2);
+    const totalAmount: string = (Data || []).reduce((sum, item) => sum + (Number(item.TotalPrice) || 0), 0).toFixed(2);
 
-    console.log(totalAmount)
+   
     return (
         <div className="md:h-screen w-full bg-slate-700 text-white h-auto md:sticky top-0 md:top-16 overflow-y-scroll">
             <div className="text-center pt-20 pb-10 md:pb-0">

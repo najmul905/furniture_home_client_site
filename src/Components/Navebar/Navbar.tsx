@@ -60,7 +60,7 @@ const Navbar = () => {
             <li onClick={() => setUserTagol(!userTogol)}>
             {email?
                 <div className='h-9 w-9 rounded-full'><img className='h-9 w-9 rounded-full cursor-pointer' src={image??undefined}
-                alt="" /></div>:<FaUserCircle className='h-6 w-6 cursor-pointer' />}
+                alt="" /></div>:<FaUserCircle className='h-9 w-9 cursor-pointer' />}
             </li>
             <li onClick={()=>setIsOpen(!isOpen)} className='md:hidden'>
                 {
@@ -84,7 +84,7 @@ const Navbar = () => {
     </>;
 
     return (
-        <div className='bg-slate-300 fixed top-0 w-full h-8 z-10'>
+        <div className='bg-slate-300 sticky top-0 w-full h-8 z-10'>
             <div className='flex items-center justify-between px-10 py-2 bg-slate-300'>
                 <div className='md:h-[50px] h-[40px] overflow-hidden'><img className='md:h-[50px] h-[40px]' src="https://i.postimg.cc/0jNDs17y/furniture-home.png" alt="" /></div>
                 <div

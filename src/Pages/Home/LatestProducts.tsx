@@ -43,9 +43,10 @@ const LatestProducts = () => {
             <motion.div
             onMouseEnter={()=>setViewValue(Data._id)}
             onMouseLeave={()=>setViewValue(null)}
-            initial={{scale:0.9, y:100}}
-            whileInView={{scale:1,y:0}}
-            transition={{duration:1,delay:0.3}}
+            initial={{scale:0.9, y:100,opacity:0}}
+            whileInView={{scale:1,y:0,opacity:1}} 
+            viewport={{ once: true,  }}
+            transition={{duration:0.75}}
             key={index} className="border rounded overflow-hidden">
               <img className="bg-slate-500  md:h-60 h-36 w-full" src={Data.Image} alt="" />
               <div className="mx-5 py-4">
@@ -61,7 +62,7 @@ const LatestProducts = () => {
                     y: viewValue === Data._id ? 0 : 50,
                     opacity: viewValue === Data._id ? 1 : 0
                   }}
-                  transition={{ duration:.75, ease: "easeInOut" }}
+                  transition={{ duration:.50, ease: "easeInOut" }}
                   onClick={()=>handelAddToCard(Data)}
                   className="px-2 border-2 font-semibold active:bg-black active:text-white border-orange-500 rounded-full">Add to Card</motion.button>
                 </div>

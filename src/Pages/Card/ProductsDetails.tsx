@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../Redux/store";
 import { MdDelete } from "react-icons/md";
-import { removeProduct } from "../../Redux/features/addCard/addCard";
+import { decreaseQuantity, increaseQuantity, removeProduct } from "../../Redux/features/addCard/addCard";
 import Swal from "sweetalert2";
 
 
@@ -31,9 +31,17 @@ const ProductsDetails = () => {
           });
         }
         else{
-            console.log("Your data is Undefined")
-        }
-        
+          alert("Your data is Undefined") 
+        }   
+    }
+
+    // Increase Quantity
+    const handleIncrease=(id:string|number|undefined=undefined)=>{if(id!=undefined){ dispatch(increaseQuantity(id))}
+        else{  alert("Your data is Undefined")} } 
+    // Decrease Quantity 
+    const handelDecrease=(id:string|number|undefined=undefined)=>{
+        if(id!=undefined){ dispatch(decreaseQuantity(id))}
+        else{  alert("Your data is Undefined")}
     }
 
     return (
@@ -46,6 +54,7 @@ const ProductsDetails = () => {
        
         <th>Name</th>
         <th>Details</th>
+        <th>Quantity</th>
         <th>Price</th>
         <th>Delete</th>
       </tr>
@@ -72,7 +81,8 @@ const ProductsDetails = () => {
           <td>
             <p className="line-clamp-1">{data.About}</p> 
           </td>
-          <td className="">${data.Price}</td>
+          <th><td className=" flex items-center gap-2"><button disabled={data.Quantity==1} onClick={()=>handelDecrease(data._id)} className="flex items-center text-[20px]">-</button> {data.Quantity} <button onClick={()=>handleIncrease(data._id)} className="text-[20px]">+</button></td></th>
+          <td className="">${data.Price} or{data.TotalPrice}</td>
           <th>
             <button onClick={()=>handelDelete(data._id)} className="text-red-600">< MdDelete size={20} />
             </button>
