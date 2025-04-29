@@ -21,9 +21,11 @@ const BestSelling = () => {
     console.log(data)
   
    const dispatch=useAppDispatch()
-    const handelAddToCard=(Data:Data)=>{
-        dispatch(addCard(Data))
-    }
+   const handelAddCard=(data:Data)=>{
+    const Quantity=1
+    dispatch(addCard({...data,Quantity}))
+   }
+
     return (
         <div>
             {/* title */}
@@ -64,14 +66,14 @@ const BestSelling = () => {
                         >$ {d.Price}</motion.p>
                         </div>
                         <motion.button 
-                        onClick={()=>handelAddToCard(d)}
-                        initial={{ y: 50, opacity: 0 }}
+                        onClick={()=>handelAddCard(d)}
+                        initial={{ y: 20, opacity: 0 }}
                         animate={{
-                          y: viewValue === d._id ? 0 : 50,
+                          y: viewValue === d._id ? 0 : 20,
                           opacity: viewValue === d._id ? 1 : 0
                         }}
                         transition={{ duration:.50, ease: "easeInOut" }}
-                        className="border-b-2 text-[12px] active:border-slate-600">ADD TO CARD</motion.button>
+                        className="border-b-2 text-[12px] md:text-[14px] hover:border-orange-500 active:border-slate-600">ADD TO CARD</motion.button>
                     </motion.div>
                 </div>
                </div>)

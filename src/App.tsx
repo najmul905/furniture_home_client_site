@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./Components/Firebase/Firebase";
 import { setUser } from "./Redux/features/userSlice/userSlice";
-// import BackDrop from "./Components/Backdrop/Backdrop";
 
 
 const App = () => {
@@ -14,7 +13,6 @@ const App = () => {
 
   useEffect(() => {
       const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-       console.log(currentUser)
           if (currentUser) {
               dispatch(
                   setUser({
@@ -32,19 +30,17 @@ const App = () => {
                 photoURL:null,
                 isLoading:false
               })
-            )
-          } 
+            )} 
       });
-
-      return () => unsubscribe(); // Cleanup on unmount
+      return () => unsubscribe(); 
   }, [dispatch]);
   return (
     <div>
       <Navbar></Navbar>
-      <div className="">
+      <div >
       <Outlet></Outlet>
       </div>
-      {/* <BackDrop></BackDrop> */}
+   
     </div>
   );
 };

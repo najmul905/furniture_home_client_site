@@ -62,7 +62,7 @@ const LatestFurniture = () => {
                                      }}
                                      transition={{ duration:.75, ease: "easeInOut" }}
                                     onClick={()=>handelAddToCard(Data)}
-                                    className="px-2 border-2 font-semibold active:bg-black active:text-white border-orange-500  rounded-full">Add to Card</motion.button>
+                                    className="border-b-2 text-[12px] md:text-[14px] hover:border-orange-500 active:border-slate-600">Add to Card</motion.button>
                                 </div>
                             </div>
                         </div>

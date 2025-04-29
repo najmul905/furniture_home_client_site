@@ -45,7 +45,7 @@ const ProductsDetails = () => {
     }
 
     return (
-        <div className="bg-slate-700 text-white h-screen overflow-y-scroll">
+        <div className="bg-slate-700 pt-14 text-white h-screen overflow-y-scroll">
             <div className="overflow-x-auto">
   <table className="table">
     {/* head */}
@@ -54,8 +54,9 @@ const ProductsDetails = () => {
        
         <th>Name</th>
         <th>Details</th>
-        <th>Quantity</th>
         <th>Price</th>
+        <th>Quantity</th>
+        <th>Total Price</th>
         <th>Delete</th>
       </tr>
     </thead>
@@ -81,8 +82,9 @@ const ProductsDetails = () => {
           <td>
             <p className="line-clamp-1">{data.About}</p> 
           </td>
-          <th><td className=" flex items-center gap-2"><button disabled={data.Quantity==1} onClick={()=>handelDecrease(data._id)} className="flex items-center text-[20px]">-</button> {data.Quantity} <button onClick={()=>handleIncrease(data._id)} className="text-[20px]">+</button></td></th>
-          <td className="">${data.Price} or{data.TotalPrice}</td>
+          <td>${data.Price}</td>
+          <th><td className=" flex items-center gap-2"><button disabled={data.Quantity==1} onClick={()=>handelDecrease(data._id)} className={`${data.Quantity==1?"cursor-no-drop":"cursor-pointer"} text-[20px] `}>-</button> {data.Quantity} <button onClick={()=>handleIncrease(data._id)} className="text-[20px]">+</button></td></th>
+          <td className="">${data.TotalPrice}</td>
           <th>
             <button onClick={()=>handelDelete(data._id)} className="text-red-600">< MdDelete size={20} />
             </button>

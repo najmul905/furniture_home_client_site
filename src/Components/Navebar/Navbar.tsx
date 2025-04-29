@@ -20,8 +20,7 @@ const underlineMapping: Record<ValidPaths, string> = {
 };
 
 const Navbar = () => {
-        const {data,isLoading}=useGetUsersQuery()
-    console.log(isLoading,data)
+        const {data}=useGetUsersQuery()
 
     const location = useLocation();
     const currentPath = location.pathname as ValidPaths; 
@@ -30,11 +29,9 @@ const Navbar = () => {
     const [userTogol, setUserTagol] = useState(false);
     const  {email,image}=useSelector((state:RootState)=>state.userSlice)
     const products=useSelector((state:RootState)=>state.addCardSlice.products)
-    console.log(products.length)
-    console.log(email)
     
     const forUserStatus=data?.find(D=>D.email===email)
-    console.log(forUserStatus?.userStatus)
+   
 
     const handelLogOut = () => {
         signOut(auth).catch((error) => console.error("Logout failed: ", error));
@@ -84,7 +81,7 @@ const Navbar = () => {
     </>;
 
     return (
-        <div className='bg-slate-300 sticky top-0 w-full h-8 z-10'>
+        <div className='bg-slate-300 fixed top-0 w-full h-8 z-10'>
             <div className='flex items-center justify-between px-10 py-2 bg-slate-300'>
                 <div className='md:h-[50px] h-[40px] overflow-hidden'><img className='md:h-[50px] h-[40px]' src="https://i.postimg.cc/0jNDs17y/furniture-home.png" alt="" /></div>
                 <div

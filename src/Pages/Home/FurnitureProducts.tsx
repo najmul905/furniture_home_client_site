@@ -30,8 +30,10 @@ const FurnitureProducts = () => {
 
     const dispatch=useAppDispatch()
     const handelAddToCard=(data:Data)=>{
-        dispatch(addCard(data))
-    }
+        const Quantity=1
+        dispatch(addCard({...data,Quantity}))
+       }
+    
    
     return (
         <div>
@@ -61,14 +63,14 @@ const FurnitureProducts = () => {
                             className=" absolute text-[11px] top-0 right-0 m-2 bg-slate-700 px-2 rounded-xl text-white font-semibold italic">{Data.Discount}% off</motion.h1>
                             <div className=" mt-5"><motion.button
                             
-                            initial={{ y: 50, opacity: 0 }}
+                            initial={{ y: 20, opacity: 0 }}
                             animate={{
-                              y: viewValue === Data._id ? 0 : 50,
+                              y: viewValue === Data._id ? 0 : 20,
                               opacity: viewValue === Data._id ? 1 : 0
                             }}
                             transition={{ duration:.50, ease: "easeInOut" }}
                             onClick={()=>handelAddToCard(Data)}
-                            className="px-2 border-2 font-semibold active:bg-black active:text-white border-orange-500 rounded-full">Add to Card</motion.button></div>
+                            className="border-b-2 text-[12px] md:text-[14px] hover:border-orange-500 active:border-slate-600">Add to Card</motion.button></div>
                             </div>
 
                         </motion.div>

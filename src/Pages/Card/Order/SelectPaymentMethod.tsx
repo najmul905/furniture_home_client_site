@@ -14,7 +14,8 @@ const SelectPaymentMethod = () => {
 
     const Data=useSelector((state:RootState)=>state.addCardSlice.products)
     // const prices: number[] = Data.map(product => product.Price);
-    const SubTotalAmount: string = (Data || []).reduce((sum, item) => sum + (Number(item.Price) || 0), 0).toFixed(2);
+    const SubTotalAmount: string = (Data || []).reduce((sum, item) => sum + (Number(item.TotalPrice) || 0), 0).toFixed(2);
+    const totalProducts: number = (Data || []).reduce((sum, item) => sum + (Number(item.Quantity) || 0), 0);
     const totalAmount = (Number(SubTotalAmount) + 150.0).toFixed(2);
 
     // handel order button Control
@@ -42,6 +43,7 @@ const SelectPaymentMethod = () => {
                     <h1 className="text-[15px] font-semibold text-center my-4 uppercase">Order Summary</h1>
                     <div className="">
                         <h1 className="flex items-center justify-between text-[14px] font-semibold">Total Products: <span>{Data.length}</span></h1>
+                        <h1 className="flex items-center justify-between text-[14px] font-semibold">Total Products Quantity: <span>{totalProducts}</span></h1>
                         <h1 className="flex items-center justify-between text-[14px] font-semibold">Subtotal Price: <span>{SubTotalAmount}tk</span></h1>
                         <h1 className="flex items-center justify-between text-[14px] font-semibold">Delivery Charge: <span>150tk</span></h1>
                         <hr className="w-full border border-black"></hr>

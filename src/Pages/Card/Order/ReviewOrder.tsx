@@ -15,7 +15,7 @@ const ReviewOrder = () => {
                         <img className="h-16 w-20 my-3" src={Data.Image} alt="" />
                         <div>
                             <h1>Name: {Data.Name}</h1>
-                            <h1>Price: {Data.Price}</h1>
+                            <div><h1>Price: {Data.TotalPrice}</h1><h1>Quantity:{Data.Quantity}</h1></div>
                         </div>
                     </div>
                 ))}

@@ -27,9 +27,11 @@ const LatestProducts = () => {
       window.scrollTo(0, 0);
     };
     const dispatch=useAppDispatch()
-    const handelAddToCard=(Data:Data)=>{
-      dispatch(addCard(Data))
-    }
+    const handelAddToCard=(data:Data)=>{
+      const Quantity=1
+      dispatch(addCard({...data,Quantity}))
+     }
+  
   
     return (
         <div>
@@ -57,14 +59,14 @@ const LatestProducts = () => {
                 <div>
                   <motion.button
 
-                  initial={{ y: 50, opacity: 0 }}
+                  initial={{ y: 20, opacity: 0 }}
                   animate={{
-                    y: viewValue === Data._id ? 0 : 50,
+                    y: viewValue === Data._id ? 0 : 20,
                     opacity: viewValue === Data._id ? 1 : 0
                   }}
                   transition={{ duration:.50, ease: "easeInOut" }}
                   onClick={()=>handelAddToCard(Data)}
-                  className="px-2 border-2 font-semibold active:bg-black active:text-white border-orange-500 rounded-full">Add to Card</motion.button>
+                  className="border-b-2 text-[12px] md:text-[14px] hover:border-orange-500 active:border-slate-600">Add to Card</motion.button>
                 </div>
               </div>
             </motion.div>
