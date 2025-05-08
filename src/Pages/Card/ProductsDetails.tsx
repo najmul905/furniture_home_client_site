@@ -46,7 +46,7 @@ const ProductsDetails = () => {
 
     return (
         <div className="bg-slate-700 pt-14 text-white h-screen overflow-y-scroll">
-            <div className="overflow-x-auto">
+            <div className="md:overflow-x-auto overflow-none">
   <table className="table">
     {/* head */}
     <thead>
@@ -54,7 +54,7 @@ const ProductsDetails = () => {
        
         <th>Name</th>
         <th>Details</th>
-        <th>Price</th>
+        <th className="hidden md:block">Price</th>
         <th>Quantity</th>
         <th>Total Price</th>
         <th>Delete</th>
@@ -75,16 +75,16 @@ const ProductsDetails = () => {
                 </div>
               </div>
               <div>
-                <div className="font-bold line-clamp-1">{data.Name}</div>
+                <div className="md:font-bold font-semibold text-[11px] line-clamp-1">{data.Name}</div>
               </div>
             </div>
           </td>
           <td>
-            <p className="line-clamp-1">{data.About}</p> 
+            <p className="line-clamp-1 text-[10px]">{data.About}</p> 
           </td>
-          <td>${data.Price}</td>
-          <th><td className=" flex items-center gap-2"><button disabled={data.Quantity==1} onClick={()=>handelDecrease(data._id)} className={`${data.Quantity==1?"cursor-no-drop":"cursor-pointer"} text-[20px] `}>-</button> {data.Quantity} <button onClick={()=>handleIncrease(data._id)} className="text-[20px]">+</button></td></th>
-          <td className="">${data.TotalPrice}</td>
+          <td className="text-[10px] hidden md:block">${data.Price}</td>
+          <th className="text-[10px]"><td className=" flex items-center gap-2"><button disabled={data.Quantity==1} onClick={()=>handelDecrease(data._id)} className={`${data.Quantity==1?"cursor-no-drop":"cursor-pointer"} text-[20px] `}>-</button> {data.Quantity} <button onClick={()=>handleIncrease(data._id)} className="text-[20px]">+</button></td></th>
+          <td className="text-[10px]">${data.TotalPrice}</td>
           <th>
             <button onClick={()=>handelDelete(data._id)} className="text-red-600">< MdDelete size={20} />
             </button>

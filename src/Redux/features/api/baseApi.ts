@@ -48,7 +48,7 @@ interface sales_growth{
 
 export const baseApi=createApi({
     reducerPath: "api",
-    baseQuery: fetchBaseQuery({baseUrl:'http://localhost:3000/'}),
+    baseQuery: fetchBaseQuery({baseUrl:'https://server-side-seven-fawn.vercel.app/'}),
     tagTypes:["Products","Users"],
     endpoints:(builder)=>({
         getBestSelling:builder.query<BestSellingItem[],void>({

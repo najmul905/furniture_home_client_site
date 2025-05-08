@@ -52,6 +52,7 @@ const AddProducts = () => {
     }
 
     return (
+        <div className="mx-10">
         <div className={`w-full pt-20 `}>
             <form onSubmit={handleSubmit(onSubmit)} className="w-full rounded-lg bg-slate-300 p-8" action="">
                 <div className="flex mb-2 items-center justify-between gap-6">
@@ -101,6 +102,8 @@ const AddProducts = () => {
                     </div>
                 </div>
             )}
+        </div>
+
         </div>
     );
 };

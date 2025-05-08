@@ -54,7 +54,7 @@ const Banner = () => {
                         </button>
                     </div>
                     <div>
-                        <img className="h-[250px] w-[180px] " src="https://i.postimg.cc/NjNcJqZB/f2926ef5-bba7-4584-9c9a-b560d442eb6e-9dec3025586412b2076dc2ec5a78effc.png" alt="" />
+                        <img className="md:h-[250px] md:w-[180px] h-[120px] w-[70px]" src="https://i.postimg.cc/NjNcJqZB/f2926ef5-bba7-4584-9c9a-b560d442eb6e-9dec3025586412b2076dc2ec5a78effc.png" alt="" />
                     </div>
                     </div>
                 </motion.div>
@@ -71,7 +71,7 @@ const Banner = () => {
                         </button>
                     </div>
                     <div>
-                        <img className="h-[250px] w-[180px]" src="https://i.postimg.cc/6pQ350X6/d9141a29-559d-4b9b-b14c-43f3608cfe1c-1-62a3f40405444651a964899bc33450fb.png" alt="" />
+                        <img className="md:h-[250px] md:w-[180px] h-[120px] w-[70px]" src="https://i.postimg.cc/6pQ350X6/d9141a29-559d-4b9b-b14c-43f3608cfe1c-1-62a3f40405444651a964899bc33450fb.png" alt="" />
                     </div>
                     </div>
                 </motion.div>
@@ -88,7 +88,7 @@ const Banner = () => {
                         </button>
                     </div>
                     <div>
-                        <img className="h-[250px] w-[180px]" src="https://i.postimg.cc/hjRcx8Hd/OIP-1.png" alt="" />
+                        <img className="md:h-[250px] md:w-[180px] h-[120px] w-[70px]" src="https://i.postimg.cc/hjRcx8Hd/OIP-1.png" alt="" />
                     </div>
                     </div>
                 </motion.div>

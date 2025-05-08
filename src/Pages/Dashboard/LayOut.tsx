@@ -5,7 +5,7 @@ const LayOut = () => {
     return (
         <div className="flex gap-2  ">
             <div className="pt-20 sticky top-0  w-[15vw]  bg-slate-700 h-screen "><SideBar></SideBar></div>
-            <div className="flex-1 md:mx-20 mb-10 "><Outlet></Outlet></div>
+            <div className="flex-1  mb-10 "><Outlet></Outlet></div>
         </div>
     );
 };

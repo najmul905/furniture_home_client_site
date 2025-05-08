@@ -32,7 +32,8 @@ const DeliveryAddress = () => {
     const HomeTown=useWatch<formData>({control,name:"HomeTown"})
     const DeliveryAddress=useWatch<formData>({control,name:"DeliveryAddress"})
     console.log(Confirm)
-    
+    const isFormComplete=Email && Name && PhonNumber && HomeTown && DeliveryAddress
+
     useEffect(()=>{
         if(Confirm){
             const data={Email,Name,PhonNumber,HomeTown,DeliveryAddress,Data:cardData,OrderDetails:{Amount:SubTotalAmount,TotalProducts:cardData.length}}
@@ -101,7 +102,7 @@ const DeliveryAddress = () => {
                     <input required disabled={cardData.length==0} {...register("DeliveryAddress") } placeholder="Delivery Address" className="border outline-none w-full ps-2" type="text" name="DeliveryAddress" id="" />
                 </div>
                 <div className="ms-4 flex gap-1 items-center ">
-                    <input disabled={cardData.length==0} onClick={()=>handelCheckbox(!DetailsConfirm)} type="checkbox" name="accept_terms" id="accept_terms" />
+                    <input disabled={!isFormComplete ||cardData.length==0} onClick={()=>handelCheckbox(!DetailsConfirm)} type="checkbox" name="accept_terms" id="accept_terms" />
                     <label className="text-[12px] text-slate-500 font-semibold">Same Building Address</label>
                 </div>
             </form>

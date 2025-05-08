@@ -2,26 +2,30 @@ import { useParams } from 'react-router-dom';
 import { useGetProductsDataQuery } from '../../../Redux/features/api/baseApi';
 import { useEffect, useState } from 'react';
 import ProductsSkeleton from './ProductsSkeleton';
-import {  useAppDispatch } from '../../../Redux/store';
+import {  RootState, useAppDispatch } from '../../../Redux/store';
 import { addCard } from '../../../Redux/features/addCard/addCard';
 // import Swal from 'sweetalert2';
 import {motion} from "framer-motion"
 import CarouselPage from './CarouselPage';
+import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 // import Footer from '../../../Components/Footer/Footer';
 
+interface Data{
+  Name:string,
+  Category:string,
+  Image:string,
+  Price:number,
+  About:string,
+  Discount:number,
+  _id:string|number
+ }
+
 const Products = () => {
-    
-   interface Data{
-    Name:string,
-    Category:string,
-    Image:string,
-    Price:number,
-    About:string,
-    Discount:number,
-    _id:string|number
-   }
+  const products=useSelector((state:RootState)=>state.addCardSlice.products)
+
+   
     const {category}=useParams()
-    // const {AllProducts}=useParams()
     const { data,isLoading } = useGetProductsDataQuery()
     const [CategoryData,setCategoryData]=useState<Data[]>([])
 
@@ -43,10 +47,28 @@ const Products = () => {
       }, [data, category]);
 
       const dispatch=useAppDispatch()
-
-   const handelAddCard=(data:Data)=>{
-    const Quantity=1
-    dispatch(addCard({...data,Quantity}))
+      
+   const handelAddCard=(Data:Data)=>{
+    const existingProduct = products.find((product) => product._id === Data._id);
+    if (existingProduct) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'This product is already in your cart!',
+        });
+        return;
+    }
+    else{
+      const Quantity=1
+      dispatch(addCard({...Data,Quantity}))
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        html: '<div style="font-size:20px">Your work has been saved</div>',
+        showConfirmButton: false,
+        timer: 500
+      });
+    }
    }
 
     return (

@@ -49,6 +49,7 @@ const AddLatestProducts = () => {
         //   console.log(data)
     }
     return (
+    <div className="mx-10">
         <div className=" w-full   pt-20">
         <form onSubmit={handleSubmit(onSubmit)} className="w-full rounded-lg bg-slate-300 p-8" action="">
             <div className="flex mb-2 items-center justify-between gap-6">
@@ -85,6 +86,8 @@ const AddLatestProducts = () => {
                 <button disabled={loading} className={`border-2 shadow-2xl border-white rounded-full px-3 text-[18px] text-center flex items-center justify-center hover:text-[#bc7c28] active:text-white "}`}>{loading ? "working" : "Submit"} <IoIosArrowRoundForward className="h-5 w-5" /></button>
             </div>
         </form>
+    </div>
+
     </div>
     );
 };
