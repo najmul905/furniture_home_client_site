@@ -8,7 +8,7 @@ const AllProductsReview = () => {
     
     return (
         <div>
-            <div className="grid grid-cols-5 gap-4">
+            <div className="grid md:grid-cols-5 grid-cols-2 gap-4">
                 <div className="h-[100px] border rounded p-4 bg-[#F5F5DC]">
                     <h1 className="text-[18px] font-semibold font-TestimonialFont">Selling Revenue</h1>
                     <p className="text-[18px] font-bold">$45903</p>

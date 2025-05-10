@@ -13,7 +13,7 @@ const UsersChart = () => {
 
 
     return (
-        <div className='card-body w-full bg-base-100 h-[350px] border rounded shadow-xl'>
+        <div className='card-body w-full bg-base-100 md:h-[350px] border rounded shadow-xl'>
             {isLoading ? 
                 <p>Loading...</p>
              

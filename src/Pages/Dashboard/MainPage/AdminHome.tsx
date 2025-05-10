@@ -9,7 +9,7 @@ const AdminHome = () => {
     const  {name}=useSelector((state:RootState)=>state.userSlice)
 
     return (
-        <div className="pt-20 md:mx-10">
+        <div className="md:pt-20 pt-16 md:mx-10">
             <div className="mb-9">
                 <h1 className="text-[24px] font-bold font-TestimonialFont mb-2">Welcome Back, {name}</h1>
                 <p className="text-[14px] text-slate-700">Here whats happening in your store all time</p>
@@ -18,7 +18,7 @@ const AdminHome = () => {
                 <AllProductsReview></AllProductsReview>
             </div>
             <div className="">
-                <div className="grid grid-cols-2 mb-8 gap-5 items-center">
+                <div className="grid md:grid-cols-2 mb-8 gap-5 items-center">
                 <UsersChart></UsersChart>
             <Sales_growth></Sales_growth> 
                 </div>

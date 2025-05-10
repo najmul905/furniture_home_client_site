@@ -61,9 +61,9 @@ const Navbar = () => {
             </li>
             <li onClick={()=>setIsOpen(!isOpen)} className='md:hidden'>
                 {
-                    isOpen?
-                    <IoCloseSharp className="h-6 w-6 me-3 cursor-pointer" />:
-                    <IoReorderThreeOutline className="h-6 w-6 me-3 cursor-pointer" />
+                    !isOpen?
+                    <IoReorderThreeOutline className="h-6 w-6 me-3 cursor-pointer" />:
+                    <IoCloseSharp className="h-6 w-6 me-3 cursor-pointer" />
                 }
             </li>
             <motion.ul
@@ -81,12 +81,11 @@ const Navbar = () => {
     </>;
 
     return (
-        <div className='bg-slate-300 fixed top-0 w-full h-8 z-10'>
-            <div className='flex items-center justify-between px-10 py-2 bg-slate-300'>
+        <div className='bg-slate-300 fixed top-0 w-full h-8 z-50'>
+            <div className='flex items-center justify-between md:px-10 py-2 bg-slate-300'>
                 <div className='md:h-[50px] h-[40px] overflow-hidden'><img className='md:h-[50px] h-[40px]' src="https://i.postimg.cc/0jNDs17y/furniture-home.png" alt="" /></div>
                 <div
-                hidden={isOpen}
-                className={` md:mt-0 transition-all bg-black  px-5 md:bg-transparent bg-opacity-70 ${isOpen?"opacity-100":"opacity-0 "} md:opacity-100  mt-28  duration-500 -z-10 md:-z-0  md:px-2 pt-16 py-2 md:py-0 rounded-b-md absolute md:static right-0 md:max-w-none md:text-center w-full`}
+                className={` md:mt-0 transition-all ${!isOpen?"hidden md:block":"block"} bg-black  px-5 md:bg-transparent bg-opacity-70  md:opacity-100  mt-28  duration-500 -z-10 md:-z-0  md:px-2 pt-16 py-2 md:py-0 rounded-b-md absolute md:static right-0 md:max-w-none md:text-center w-full`}
                 >{link}</div>
                 <div>{option}</div>
             </div>
